@@ -9,7 +9,7 @@ The only prerequisite that need to be installed on your local machine is:
 
 ## Install KubeNow command line client that includes the PhenoMeNal plugin
 
-    curl -f "https://raw.githubusercontent.com/kubenow/KubeNow/feature/phenomenal-cerebellin-v0.1/bin/kn" -o "/tmp/kn"
+    curl -f "https://raw.githubusercontent.com/kubenow/KubeNow/phenomenal/cerebellin-v0.1/bin/kn" -o "/tmp/kn"
     sudo mv /tmp/kn /usr/local/bin/
     sudo chmod +x /usr/local/bin/kn
 
