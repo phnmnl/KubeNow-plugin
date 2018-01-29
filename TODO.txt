@@ -1,0 +1,3 @@
+Sanity check for parameters
+Rename config-file
+post-deploy message to user

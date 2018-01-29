@@ -1,0 +1,26 @@
+---
+ - name: install Pachyderm
+   command: >
+     helm upgrade --install 
+     --set pachd.image.tag="{{ pachyderm_tag }}",pachd.worker.tag="{{ pachyderm_tag }}",etcd.image.tag="{{ etcd_tag }}",credentials=s3,s3.accessKey="{{ pachyderm_minio_accesskey }}",s3.secretKey="{{ pachyderm_minio_secretkey }}",s3.bucketName=defaultbucket,s3.endpoint="{{ minio_release_name }}"-minio-svc.default.svc.cluster.local:9000,s3.signature=0,etcd.persistence.enabled=true,etcd.persistence.accessMode=ReadWriteMany,etcd.persistence.size="{{ pachyderm_etcd_pvc_size }}",etcd.resources.requests.cpu=1,etcd.resources.requests.memory=2G,pachd.resources.requests.cpu=1,pachd.resources.requests.memory=2G,pachd.pfsCache=1G
+     "{{ pachyderm_release_name }}" stable/pachyderm
+
+ - name: wait for Pachyderm to be Running
+   command: >
+     kubectl get pods --namespace=default
+     -o jsonpath='{.items[?(@.spec.containers[*].name=="pachd")].status.phase}'
+   register: get_phase
+   until: get_phase.stdout | match('^(Running\s)*Running$')
+   # Wait for 10 minutes
+   retries: 120
+   delay: 5
+
+ - name: wait for Pachyderm to be Ready
+   command: >
+     kubectl get pods --namespace=default
+     -o jsonpath='{.items[?(@.spec.containers[*].name=="pachd")].status.containerStatuses[*].ready}'
+   register: get_is_ready
+   until: get_is_ready.stdout | match( '^(true\s)*true$' )
+   # Wait for 10 minutes
+   retries: 120
+   delay: 5
