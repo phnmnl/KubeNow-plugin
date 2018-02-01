@@ -16,9 +16,9 @@ The only prerequisite that need to be installed on your local machine is:
 
 Now follow the links below depending on your cloud provider:
 
-[Deploy on Amazon Web Services]
+[Deploy on Amazon Web Services](#Deploy-on-Amazon-Web-Services)
 
-[Deploy on Google Cloud Platform]
+[Deploy on Google Cloud Platform](#Deploy-on-Google-Cloud-Platform)
 
 [Deploy on Microsoft Azure]
 
@@ -27,7 +27,7 @@ Now follow the links below depending on your cloud provider:
 [Deploy on Bare metal (KVM)]
 
 
-# Amazon
+# Deploy on Amazon Web Services
 
 This tutorial provides an overview of the steps involved in setting up a CRE on Amazon using command-line.
 
@@ -126,10 +126,10 @@ In the provision-section of the config.tfvars config file
 
     kn destroy
 
-# PhenoMeNal help and support
+## PhenoMeNal help and support
 [For feedback and help](http://phenomenal-h2020.eu/home/help/)
 
-# Google cloud
+# Deploy on Google Cloud Platform
 
 This tutorial provides an overview of the steps involved in setting up a CRE on Google cloud platform using command-line.
 
@@ -229,7 +229,7 @@ In the provision-section of the config.tfvars config file
 
     kn destroy
 
-# PhenoMeNal help and support
+## PhenoMeNal help and support
 [For feedback and help](http://phenomenal-h2020.eu/home/help/)
 
 # Microsoft Azure
@@ -332,7 +332,7 @@ In the provision-section of the config.tfvars config file
 
     kn destroy
 
-# PhenoMeNal help and support
+## PhenoMeNal help and support
 [For feedback and help](http://phenomenal-h2020.eu/home/help/)
 
 
@@ -530,7 +530,7 @@ In the provision-section of the config.tfvars config file
 
     kn destroy
 
-# PhenoMeNal help and support
+## PhenoMeNal help and support
 [For feedback and help](http://phenomenal-h2020.eu/home/help/)
 
 
