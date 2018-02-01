@@ -24,7 +24,7 @@ Now follow the links below depending on your cloud provider:
 
 [Deploy on Openstack](#deploy-on-openstack)
 
-[Deploy on Bare metal KVM](#deploy-on-bare-metal-KVM)
+[Deploy on Bare metal (KVM)](#deploy-on-bare-metal-kvm)
 
 
 # Deploy on Amazon Web Services
