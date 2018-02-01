@@ -41,7 +41,15 @@ provision = {
   "action" = {
     "type"      = "ansible-playbook"
     "playbook"  = "playbooks/install-core.yml"
-    "skip-tags" = "heketi-glusterfs"
+  }
+
+  "action" = {
+    "type"      = "ansible-playbook"
+    "playbook"  = "playbooks/create-pvc.yml"
+    "extra_vars" = {
+      "claim_name"      = "galaxy-pvc"
+      "storage"         = "95Gi"
+    }
   }
 
   "action" = {

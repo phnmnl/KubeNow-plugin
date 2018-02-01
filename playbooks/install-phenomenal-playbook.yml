@@ -13,9 +13,7 @@
     dashboard_include: true
     dashboard_hostname: "dashboard"
     # Storage
-    nfs_volume_size: 0
     pvc_name: "galaxy-pvc"
-    pvc_storage: "95Gi"
     # Domain
     cloudflare_proxied: false
     proxied_suffix: ""
@@ -27,33 +25,6 @@
     - name: Wait for all default kubernetes pods to be ready
       include_role:
         name: roles/wait-for-all-pods-ready
-
-    # Create nfs or gluster server
-
-    # nfs
-    - name: shared-volume-nfs
-      include_role:
-        name: ../playbooks/roles/shared-volume-nfs
-      vars:
-        nfs_server: "{{nfs_server_host}}"
-        nfs_vol_size: "{{nfs_volume_size}}"
-        nfs_path: "{{nfs_server_path}}"
-      when:
-        (nfs_volume_size | int) > 0
-
-    # Gluster
-    - include_role:
-        name: ../playbooks/roles/heketi-gluster
-      when:
-        nfs_volume_size is undefined or (nfs_volume_size | int) == 0
-
-    # Create Persistent Volume Claim
-    - name: persistent volume claim
-      include_role:
-        name: ../playbooks/roles/pvc
-      vars:
-        claim_name: "{{pvc_name}}"
-        storage: "{{pvc_storage}}"
 
     # Galaxy
     - name: Galaxy

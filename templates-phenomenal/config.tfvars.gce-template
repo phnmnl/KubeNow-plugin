@@ -42,7 +42,15 @@ provision = {
   "action" = {
     "type"      = "ansible-playbook"
     "playbook"  = "playbooks/install-core.yml"
-    "skip-tags" = "heketi-glusterfs"
+  }
+
+  "action" = {
+    "type"      = "ansible-playbook"
+    "playbook"  = "playbooks/create-pvc.yml"
+    "extra_vars" = {
+      "claim_name"      = "galaxy-pvc"
+      "storage"         = "95Gi"
+    }
   }
 
   "action" = {
@@ -53,7 +61,8 @@ provision = {
       "galaxy_admin_password" = "password"
       "jupyter_password"      = "password"
       "dashboard_username"    = "admin"
-      "dashboard_password"     = "password"
+      "dashboard_password"    = "password"
+      "pvc_storage"           = "95Gi"
     }
   }
 
