@@ -16,9 +16,9 @@ The only prerequisite that need to be installed on your local machine is:
 
 Now follow the links below depending on your cloud provider:
 
-[Deploy on Amazon Web Services](#Deploy-on-Amazon-Web-Services)
+[Deploy on Amazon Web Services](#deploy-on-amazon-web-services)
 
-[Deploy on Google Cloud Platform](#Deploy-on-Google-Cloud-Platform)
+[Deploy on Google Cloud Platform](#deploy-on-google-cloud-platform)
 
 [Deploy on Microsoft Azure]
 
