@@ -27,7 +27,7 @@ Now follow the links below depending on your cloud provider:
 [Deploy on Bare metal (KVM)]
 
 
-#Deploy on Amazon Web Services
+# Deploy on Amazon Web Services
 
 This tutorial provides an overview of the steps involved in setting up a CRE on Amazon using command-line.
 
