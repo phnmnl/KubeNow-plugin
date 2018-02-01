@@ -20,11 +20,11 @@ Now follow the links below depending on your cloud provider:
 
 [Deploy on Google Cloud Platform](#deploy-on-google-cloud-platform)
 
-[Deploy on Microsoft Azure]
+[Deploy on Microsoft Azure](#deploy-on-microsoft-azure)
 
-[Deploy on Openstack]
+[Deploy on Openstack](#deploy-on-openstack)
 
-[Deploy on Bare metal (KVM)]
+[Deploy on Bare metal KVM](#deploy-on-bare-metal-KVM)
 
 
 # Deploy on Amazon Web Services
@@ -232,7 +232,7 @@ In the provision-section of the config.tfvars config file
 ## PhenoMeNal help and support
 [For feedback and help](http://phenomenal-h2020.eu/home/help/)
 
-# Microsoft Azure
+# Deploy on Microsoft Azure
 
 This tutorial provides an overview of the steps involved in setting up a CRE on Microsoft Azure using command-line.
 
@@ -336,7 +336,7 @@ In the provision-section of the config.tfvars config file
 [For feedback and help](http://phenomenal-h2020.eu/home/help/)
 
 
-# OpenStack
+# Deploy on OpenStack
 
 This tutorial provides an overview of the steps involved in setting up a CRE on Openstack using command-line.
 
@@ -445,7 +445,7 @@ And then create the VRE:
 [For feedback and help](http://phenomenal-h2020.eu/home/help/)
 
 
-# Local server (Bare metal)
+# Deploy on Bare metal (KVM)
 
 This tutorial provides an overview of the steps involved in setting up a CRE on a local server (bare metal) using command-line.
 
