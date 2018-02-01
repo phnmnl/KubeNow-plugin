@@ -6,17 +6,9 @@ cluster_prefix = "your-cluster-prefix" # Your cluster prefix
 master_vcpu = "3"
 master_memory = "4096"
 master_as_edge = "true"
-master_extra_disk_size = "200" # Extra scratch disk size
 
-# Node configuration
-node_count = "0"
-
-# Edge configuration
-# edge_count = "0"
-
-# Gluster configuration
-# glusternode_count = "0"
-# glusternode_extra_disk_size = "200" # Size in GB
+*Storage configuration*
+master_extra_disk_size = "200" # Scratch disk size
 
 # Cloudflare configuration (optional)
 # use_cloudflare = "true"
