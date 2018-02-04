@@ -532,5 +532,3 @@ In the provision-section of the config.tfvars config file
 
 ## PhenoMeNal help and support
 [For feedback and help](http://phenomenal-h2020.eu/home/help/)
-
-
