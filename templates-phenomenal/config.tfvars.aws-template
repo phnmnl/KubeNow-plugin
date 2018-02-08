@@ -67,6 +67,7 @@ provision = {
     }
   }
 
+
 #
 # "action" = {
 #   "type"     = "ansible-playbook"
@@ -82,6 +83,7 @@ provision = {
 #   }
 # }
 #
+
 
   "action" = {
     "type"       = "local-exec"
