@@ -1,4 +1,4 @@
-FROM kubenow/provisioners:phenomenal-cerebellin-v0.1
+FROM kubenow/provisioners:phenomenal-stable
 
 # Add KubeNow
 COPY . /opt/KubeNow

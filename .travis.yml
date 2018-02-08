@@ -20,8 +20,8 @@ branches:
 
 env:
   global:
-    - KN_BRANCH="phenomenal/cerebellin-v0.1"
-    - PROVISIONER="phenomenal/provisioners:phenomenal-cerebellin-v0.1"
+    - KN_BRANCH="phenomenal/stable"
+    - PROVISIONER="phenomenal/provisioners:latest"
     - PRESET="phenomenal"
 
   matrix:
