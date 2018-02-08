@@ -21,7 +21,7 @@ branches:
 env:
   global:
     - KN_BRANCH="phenomenal/stable"
-    - PROVISIONER="phenomenal/provisioners:latest"
+    - PROVISIONER="phenomenal/provisioners:phenomenal-stable"
     - PRESET="phenomenal"
 
   matrix:
