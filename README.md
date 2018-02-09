@@ -92,7 +92,7 @@ In the provision-section of the config.tfvars config file
 - **`dashboard_username`**: username to access your kubernetes dashboard
 - **`dashboard_password`**: password for your kubernetes dashboard
 
-*Pachyderm + Minio (optional)*
+*Pachyderm + Minio (optional)* - See: [Pachyderm tutorial with MTBLS data](https://github.com/phnmnl/MTBLS233-Pachyderm)
 - **`pachyderm_release_name`**: a release name for the Pachyderm service
 - **`pachyderm_etcd_pvc_size`**: storage dedicated for etcd (In GB)
 - **`minio_release_name`**: release name for the Minio service
@@ -111,12 +111,7 @@ In the provision-section of the config.tfvars config file
     Jupyter        = http://notebook.<your-prefix>.<yourdomain>
     Luigi          = http://luigi.<your-prefix>.<yourdomain>
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
-    Pachyderm      = ssh into the master node and install patchctl:
-
-    curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v1.6.6/pachctl_1.6.6_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
-
-  Please note that the `pachctl` version should correspond with the pachd service version. For more information please consult: http://pachyderm.readthedocs.io/en/latest/index.html. You can see an example on how to create pipelines here: https://github.com/pharmbio/MTBLS233-Pachyderm
-
+    Pachyderm      = ssh into the master node and use pachctl. Pachyderm tutorial: https://github.com/phnmnl/MTBLS233-Pachyderm
 
   and if you want to ssh into the master node:
 
@@ -195,7 +190,7 @@ In the provision-section of the config.tfvars config file
 - **`dashboard_username`**: username to access your kubernetes dashboard
 - **`dashboard_password`**: password for your kubernetes dashboard
 
-*Pachyderm + Minio (optional)*
+*Pachyderm + Minio (optional)* - See: [Pachyderm tutorial with MTBLS data](https://github.com/phnmnl/MTBLS233-Pachyderm)
 - **`pachyderm_release_name`**: a release name for the Pachyderm service
 - **`pachyderm_etcd_pvc_size`**: storage dedicated for etcd (In GB)
 - **`minio_release_name`**: release name for the Minio service
@@ -214,12 +209,7 @@ In the provision-section of the config.tfvars config file
     Jupyter        = http://notebook.<your-prefix>.<yourdomain>
     Luigi          = http://luigi.<your-prefix>.<yourdomain>
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
-    Pachyderm      = ssh into the master node and install patchctl:
-
-    curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v1.6.6/pachctl_1.6.6_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
-
-  Please note that the `pachctl` version should correspond with the pachd service version. For more information please consult: http://pachyderm.readthedocs.io/en/latest/index.html. You can see an example on how to create pipelines here: https://github.com/pharmbio/MTBLS233-Pachyderm
-
+    Pachyderm      = ssh into the master node and use pachctl. Pachyderm tutorial: https://github.com/phnmnl/MTBLS233-Pachyderm
 
   and if you want to ssh into the master node:
 
@@ -298,7 +288,7 @@ In the provision-section of the config.tfvars config file
 - **`dashboard_username`**: username to access your kubernetes dashboard
 - **`dashboard_password`**: password for your kubernetes dashboard
 
-*Pachyderm + Minio (optional)*
+*Pachyderm + Minio (optional)* - See: [Pachyderm tutorial with MTBLS data](https://github.com/phnmnl/MTBLS233-Pachyderm)
 - **`pachyderm_release_name`**: a release name for the Pachyderm service
 - **`pachyderm_etcd_pvc_size`**: storage dedicated for etcd (In GB)
 - **`minio_release_name`**: release name for the Minio service
@@ -317,12 +307,7 @@ In the provision-section of the config.tfvars config file
     Jupyter        = http://notebook.<your-prefix>.<yourdomain>
     Luigi          = http://luigi.<your-prefix>.<yourdomain>
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
-    Pachyderm      = ssh into the master node and install patchctl:
-
-    curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v1.6.6/pachctl_1.6.6_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
-
-  Please note that the `pachctl` version should correspond with the pachd service version. For more information please consult: http://pachyderm.readthedocs.io/en/latest/index.html. You can see an example on how to create pipelines here: https://github.com/pharmbio/MTBLS233-Pachyderm
-
+    Pachyderm      = ssh into the master node and use pachctl. Pachyderm tutorial: https://github.com/phnmnl/MTBLS233-Pachyderm
 
   and if you want to ssh into the master node:
 
@@ -401,7 +386,7 @@ In the provision-section of the config.tfvars config file
 - **`dashboard_username`**: username to access your kubernetes dashboard
 - **`dashboard_password`**: password for your kubernetes dashboard
 
-*Pachyderm + Minio (optional)*
+*Pachyderm + Minio (optional)* - See: [Pachyderm tutorial with MTBLS data](https://github.com/phnmnl/MTBLS233-Pachyderm)
 - **`pachyderm_release_name`**: a release name for the Pachyderm service
 - **`pachyderm_etcd_pvc_size`**: storage dedicated for etcd (In GB)
 - **`minio_release_name`**: release name for the Minio service
@@ -412,12 +397,6 @@ In the provision-section of the config.tfvars config file
 
 **Once you are done with your settings you are ready to deploy the cluster:**
 
-Now you need to source your openstack-rc-credentials file:
-
-    source /path/to/openstack/credentials
-
-And then create the VRE:
-
     kn apply
 
   when deployment is finished then you should be able to reach the services at:
@@ -426,12 +405,7 @@ And then create the VRE:
     Jupyter        = http://notebook.<your-prefix>.<yourdomain>
     Luigi          = http://luigi.<your-prefix>.<yourdomain>
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
-    Pachyderm      = ssh into the master node and install patchctl:
-
-    curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v1.6.6/pachctl_1.6.6_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
-
-  Please note that the `pachctl` version should correspond with the pachd service version. For more information please consult: http://pachyderm.readthedocs.io/en/latest/index.html. You can see an example on how to create pipelines here: https://github.com/pharmbio/MTBLS233-Pachyderm
-
+    Pachyderm      = ssh into the master node and use pachctl. Pachyderm tutorial: https://github.com/phnmnl/MTBLS233-Pachyderm
 
   and if you want to ssh into the master node:
 
@@ -496,14 +470,6 @@ In the provision-section of the config.tfvars config file
 - **`dashboard_username`**: username to access your kubernetes dashboard
 - **`dashboard_password`**: password for your kubernetes dashboard
 
-*Pachyderm + Minio (optional)*
-- **`pachyderm_release_name`**: a release name for the Pachyderm service
-- **`pachyderm_etcd_pvc_size`**: storage dedicated for etcd (In GB)
-- **`minio_release_name`**: release name for the Minio service
-- **`minio_pvc_size`**: storage dedicated for the Minio service (In GB)
-- **`minio_accesskey`**: access key for the S3 endpoint
-- **`minio_secretkey`**: secret key for the S3 endpoint
-- **`minio_replicas`**: number of replicas of the Minio service
 
 **Once you are done with your settings you are ready to deploy the cluster:**
 
@@ -515,11 +481,6 @@ In the provision-section of the config.tfvars config file
     Jupyter        = http://notebook.<your-prefix>.<yourdomain>
     Luigi          = http://luigi.<your-prefix>.<yourdomain>
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
-    Pachyderm      = ssh into the master node and install patchctl:
-
-    curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v1.6.6/pachctl_1.6.6_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
-
-  Please note that the `pachctl` version should correspond with the pachd service version. For more information please consult: http://pachyderm.readthedocs.io/en/latest/index.html. You can see an example on how to create pipelines here: https://github.com/pharmbio/MTBLS233-Pachyderm
 
 
   and if you want to ssh into the master node:

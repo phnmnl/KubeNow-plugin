@@ -67,7 +67,8 @@ provision = {
     }
   }
 
-
+#
+# Optional pachyderm installation
 #
 # "action" = {
 #   "type"     = "ansible-playbook"
@@ -82,7 +83,7 @@ provision = {
 #     "pachyderm_etcd_pvc_size" = "5G"
 #   }
 # }
-#
+
 
 
   "action" = {
