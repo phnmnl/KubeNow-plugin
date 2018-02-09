@@ -68,21 +68,20 @@ provision = {
   }
 
 
-#
-# "action" = {
-#   "type"     = "ansible-playbook"
-#   "playbook" = "playbooks/install-pachyderm-minio-playbook.yml"
-#   "extra_vars" = {
-#     "minio_release_name"      = "minio-release"
-#     "minio_pvc_size"          = "20G"
-#     "minio_accesskey"         = "myaccesskey"
-#     "minio_secretkey"         = "mysecretkey"
-#     "minio_replicas"          = "4"
-#     "pachyderm_release_name"  = "pachyderm-release"
-#     "pachyderm_etcd_pvc_size" = "5G"
-#   }
-# }
-#
+ "action" = {
+   "type"     = "ansible-playbook"
+   "playbook" = "playbooks/install-pachyderm-minio-playbook.yml"
+   "extra_vars" = {
+     "minio_release_name"      = "minio-release"
+     "minio_pvc_size"          = "20G"
+     "minio_accesskey"         = "myaccesskey"
+     "minio_secretkey"         = "mysecretkey"
+     "minio_replicas"          = "4"
+     "pachyderm_release_name"  = "pachyderm-release"
+     "pachyderm_etcd_pvc_size" = "5G"
+   }
+ }
+
 
 
   "action" = {
