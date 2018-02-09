@@ -92,7 +92,7 @@ In the provision-section of the config.tfvars config file
 - **`dashboard_username`**: username to access your kubernetes dashboard
 - **`dashboard_password`**: password for your kubernetes dashboard
 
-*Pachyderm + Minio (optional)*
+*Pachyderm + Minio (optional)* - See: [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
 - **`pachyderm_release_name`**: a release name for the Pachyderm service
 - **`pachyderm_etcd_pvc_size`**: storage dedicated for etcd (In GB)
 - **`minio_release_name`**: release name for the Minio service
@@ -111,10 +111,7 @@ In the provision-section of the config.tfvars config file
     Jupyter        = http://notebook.<your-prefix>.<yourdomain>
     Luigi          = http://luigi.<your-prefix>.<yourdomain>
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
-    Pachyderm      = ssh into the master node and use pachctl
-
-  For information regarding the usage of pachctl please consult: http://docs.pachyderm.io/en/v1.6.6/, or simply execute `pachctl` in your terminal to explore the Pachyderm API. You can see an example on how to create pipelines here: https://github.com/phnmnl/MTBLS233-Pachyderm
-
+    Pachyderm      = ssh into the master node and use pachctl [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
 
   and if you want to ssh into the master node:
 
@@ -193,7 +190,7 @@ In the provision-section of the config.tfvars config file
 - **`dashboard_username`**: username to access your kubernetes dashboard
 - **`dashboard_password`**: password for your kubernetes dashboard
 
-*Pachyderm + Minio (optional)*
+*Pachyderm + Minio (optional)* - See: [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
 - **`pachyderm_release_name`**: a release name for the Pachyderm service
 - **`pachyderm_etcd_pvc_size`**: storage dedicated for etcd (In GB)
 - **`minio_release_name`**: release name for the Minio service
@@ -212,10 +209,7 @@ In the provision-section of the config.tfvars config file
     Jupyter        = http://notebook.<your-prefix>.<yourdomain>
     Luigi          = http://luigi.<your-prefix>.<yourdomain>
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
-    Pachyderm      = ssh into the master node and use pachctl
-
-  For information regarding the usage of pachctl please consult: http://docs.pachyderm.io/en/v1.6.6/, or simply execute `pachctl` in your terminal to explore the Pachyderm API. You can see an example on how to create pipelines here: https://github.com/phnmnl/MTBLS233-Pachyderm
-
+    Pachyderm      = ssh into the master node and use pachctl [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
 
   and if you want to ssh into the master node:
 
@@ -294,7 +288,7 @@ In the provision-section of the config.tfvars config file
 - **`dashboard_username`**: username to access your kubernetes dashboard
 - **`dashboard_password`**: password for your kubernetes dashboard
 
-*Pachyderm + Minio (optional)*
+*Pachyderm + Minio (optional)* - See: [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
 - **`pachyderm_release_name`**: a release name for the Pachyderm service
 - **`pachyderm_etcd_pvc_size`**: storage dedicated for etcd (In GB)
 - **`minio_release_name`**: release name for the Minio service
@@ -313,10 +307,7 @@ In the provision-section of the config.tfvars config file
     Jupyter        = http://notebook.<your-prefix>.<yourdomain>
     Luigi          = http://luigi.<your-prefix>.<yourdomain>
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
-    Pachyderm      = ssh into the master node and use pachctl
-
-  For information regarding the usage of pachctl please consult: http://docs.pachyderm.io/en/v1.6.6/, or simply execute `pachctl` in your terminal to explore the Pachyderm API. You can see an example on how to create pipelines here: https://github.com/phnmnl/MTBLS233-Pachyderm
-
+    Pachyderm      = ssh into the master node and use pachctl [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
 
   and if you want to ssh into the master node:
 
@@ -395,7 +386,7 @@ In the provision-section of the config.tfvars config file
 - **`dashboard_username`**: username to access your kubernetes dashboard
 - **`dashboard_password`**: password for your kubernetes dashboard
 
-*Pachyderm + Minio (optional)*
+*Pachyderm + Minio (optional)* - See: [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
 - **`pachyderm_release_name`**: a release name for the Pachyderm service
 - **`pachyderm_etcd_pvc_size`**: storage dedicated for etcd (In GB)
 - **`minio_release_name`**: release name for the Minio service
@@ -406,12 +397,6 @@ In the provision-section of the config.tfvars config file
 
 **Once you are done with your settings you are ready to deploy the cluster:**
 
-Now you need to source your openstack-rc-credentials file:
-
-    source /path/to/openstack/credentials
-
-And then create the VRE:
-
     kn apply
 
   when deployment is finished then you should be able to reach the services at:
@@ -420,10 +405,7 @@ And then create the VRE:
     Jupyter        = http://notebook.<your-prefix>.<yourdomain>
     Luigi          = http://luigi.<your-prefix>.<yourdomain>
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
-    Pachyderm      = ssh into the master node and use pachctl
-
-  For information regarding the usage of pachctl please consult: http://docs.pachyderm.io/en/v1.6.6/, or simply execute `pachctl` in your terminal to explore the Pachyderm API. You can see an example on how to create pipelines here: https://github.com/phnmnl/MTBLS233-Pachyderm
-
+    Pachyderm      = ssh into the master node and use pachctl [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
 
   and if you want to ssh into the master node:
 
