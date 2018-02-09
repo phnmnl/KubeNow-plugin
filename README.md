@@ -9,7 +9,7 @@ The only prerequisite that need to be installed on your local machine is:
 
 ## Install KubeNow command line client that includes the PhenoMeNal plugin
 
-    curl -f "https://raw.githubusercontent.com/kubenow/KubeNow/phenomenal/cerebellin-v0.1/bin/kn" -o "/tmp/kn"
+    curl -f "https://raw.githubusercontent.com/kubenow/KubeNow/phenomenal/stable/bin/kn" -o "/tmp/kn"
     sudo mv /tmp/kn /usr/local/bin/
     sudo chmod +x /usr/local/bin/kn
 
@@ -31,7 +31,7 @@ Now follow the links below depending on your cloud provider:
 
 This tutorial provides an overview of the steps involved in setting up a CRE on Amazon using command-line.
 
-**Note**: Please follow [[Starting a PhenoMeNal CRE on a public or private cloud provider|Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider]] for the general prerequisites for a deployment on a private of public cloud provider. 
+**Note**: Please follow [[Starting a PhenoMeNal CRE on a public or private cloud provider|Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider]] for the general prerequisites for a deployment on a private of public cloud provider.
 
 ## **Amazon specific prerequisites**
 
@@ -133,7 +133,7 @@ In the provision-section of the config.tfvars config file
 
 This tutorial provides an overview of the steps involved in setting up a CRE on Google cloud platform using command-line.
 
-**Note**: Please follow [[Starting a PhenoMeNal CRE on a public or private cloud provider|Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider]] for the general prerequisites for a deployment on a private of public cloud provider. 
+**Note**: Please follow [[Starting a PhenoMeNal CRE on a public or private cloud provider|Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider]] for the general prerequisites for a deployment on a private of public cloud provider.
 
 ## **Google cloud specific prerequisites**
 
@@ -236,7 +236,7 @@ In the provision-section of the config.tfvars config file
 
 This tutorial provides an overview of the steps involved in setting up a CRE on Microsoft Azure using command-line.
 
-**Note**: Please follow [[Starting a PhenoMeNal CRE on a public or private cloud provider|Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider]] for the general prerequisites for a deployment on a private of public cloud provider. 
+**Note**: Please follow [[Starting a PhenoMeNal CRE on a public or private cloud provider|Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider]] for the general prerequisites for a deployment on a private of public cloud provider.
 
 **Azure specific prerequisites**
 
@@ -340,7 +340,7 @@ In the provision-section of the config.tfvars config file
 
 This tutorial provides an overview of the steps involved in setting up a CRE on Openstack using command-line.
 
-**Note**: Please follow [[Starting a PhenoMeNal CRE on a public or private cloud provider|Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider]] for the general prerequisites for a deployment on a private of public cloud provider. 
+**Note**: Please follow [[Starting a PhenoMeNal CRE on a public or private cloud provider|Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider]] for the general prerequisites for a deployment on a private of public cloud provider.
 
 ## **OpenStack specific prerequisites**
 
@@ -449,7 +449,7 @@ And then create the VRE:
 
 This tutorial provides an overview of the steps involved in setting up a CRE on a local server (bare metal) using command-line.
 
-**Note**: Please follow [[Starting a PhenoMeNal CRE on a public or private cloud provider|Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider]] for the general prerequisites for a deployment on a private of public cloud provider. 
+**Note**: Please follow [[Starting a PhenoMeNal CRE on a public or private cloud provider|Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider]] for the general prerequisites for a deployment on a private of public cloud provider.
 
 ## **Server specific prerequisites**
 
