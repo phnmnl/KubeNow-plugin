@@ -92,7 +92,7 @@ In the provision-section of the config.tfvars config file
 - **`dashboard_username`**: username to access your kubernetes dashboard
 - **`dashboard_password`**: password for your kubernetes dashboard
 
-*Pachyderm + Minio (optional)* - See: [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
+*Pachyderm + Minio (optional)* - See: [Pachyderm tutorial with MTBLS data](https://github.com/phnmnl/MTBLS233-Pachyderm)
 - **`pachyderm_release_name`**: a release name for the Pachyderm service
 - **`pachyderm_etcd_pvc_size`**: storage dedicated for etcd (In GB)
 - **`minio_release_name`**: release name for the Minio service
@@ -190,7 +190,7 @@ In the provision-section of the config.tfvars config file
 - **`dashboard_username`**: username to access your kubernetes dashboard
 - **`dashboard_password`**: password for your kubernetes dashboard
 
-*Pachyderm + Minio (optional)* - See: [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
+*Pachyderm + Minio (optional)* - See: [Pachyderm tutorial with MTBLS data](https://github.com/phnmnl/MTBLS233-Pachyderm)
 - **`pachyderm_release_name`**: a release name for the Pachyderm service
 - **`pachyderm_etcd_pvc_size`**: storage dedicated for etcd (In GB)
 - **`minio_release_name`**: release name for the Minio service
@@ -288,7 +288,7 @@ In the provision-section of the config.tfvars config file
 - **`dashboard_username`**: username to access your kubernetes dashboard
 - **`dashboard_password`**: password for your kubernetes dashboard
 
-*Pachyderm + Minio (optional)* - See: [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
+*Pachyderm + Minio (optional)* - See: [Pachyderm tutorial with MTBLS data](https://github.com/phnmnl/MTBLS233-Pachyderm)
 - **`pachyderm_release_name`**: a release name for the Pachyderm service
 - **`pachyderm_etcd_pvc_size`**: storage dedicated for etcd (In GB)
 - **`minio_release_name`**: release name for the Minio service
@@ -386,7 +386,7 @@ In the provision-section of the config.tfvars config file
 - **`dashboard_username`**: username to access your kubernetes dashboard
 - **`dashboard_password`**: password for your kubernetes dashboard
 
-*Pachyderm + Minio (optional)* - See: [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
+*Pachyderm + Minio (optional)* - See: [Pachyderm tutorial with MTBLS data](https://github.com/phnmnl/MTBLS233-Pachyderm)
 - **`pachyderm_release_name`**: a release name for the Pachyderm service
 - **`pachyderm_etcd_pvc_size`**: storage dedicated for etcd (In GB)
 - **`minio_release_name`**: release name for the Minio service
