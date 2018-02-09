@@ -238,7 +238,7 @@ This tutorial provides an overview of the steps involved in setting up a CRE on 
 
 **Note**: Please follow [[Starting a PhenoMeNal CRE on a public or private cloud provider|Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider]] for the general prerequisites for a deployment on a private of public cloud provider.
 
-**Azure specific prerequisites**
+## **Azure specific prerequisites**
 
 - You have created an application API key (Service Principal) in your Microsoft Azure subscription: (https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html#creating-a-service-principal)
 
