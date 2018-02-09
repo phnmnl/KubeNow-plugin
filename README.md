@@ -113,7 +113,7 @@ In the provision-section of the config.tfvars config file
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
     Pachyderm      = ssh into the master node and use pachctl
 
-  For information regarding the usage of pachctl please consult: http://docs.pachyderm.io/en/v1.6.6/, or simply execute `pachctl` in your terminal to explore the Pachyderm API. You can see an example on how to create pipelines here: https://github.com/pharmbio/MTBLS233-Pachyderm
+  For information regarding the usage of pachctl please consult: http://docs.pachyderm.io/en/v1.6.6/, or simply execute `pachctl` in your terminal to explore the Pachyderm API. You can see an example on how to create pipelines here: https://github.com/phnmnl/MTBLS233-Pachyderm
 
 
   and if you want to ssh into the master node:
@@ -214,7 +214,7 @@ In the provision-section of the config.tfvars config file
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
     Pachyderm      = ssh into the master node and use pachctl
 
-  For information regarding the usage of pachctl please consult: http://docs.pachyderm.io/en/v1.6.6/, or simply execute `pachctl` in your terminal to explore the Pachyderm API. You can see an example on how to create pipelines here: https://github.com/pharmbio/MTBLS233-Pachyderm
+  For information regarding the usage of pachctl please consult: http://docs.pachyderm.io/en/v1.6.6/, or simply execute `pachctl` in your terminal to explore the Pachyderm API. You can see an example on how to create pipelines here: https://github.com/phnmnl/MTBLS233-Pachyderm
 
 
   and if you want to ssh into the master node:
@@ -315,7 +315,7 @@ In the provision-section of the config.tfvars config file
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
     Pachyderm      = ssh into the master node and use pachctl
 
-  For information regarding the usage of pachctl please consult: http://docs.pachyderm.io/en/v1.6.6/, or simply execute `pachctl` in your terminal to explore the Pachyderm API. You can see an example on how to create pipelines here: https://github.com/pharmbio/MTBLS233-Pachyderm
+  For information regarding the usage of pachctl please consult: http://docs.pachyderm.io/en/v1.6.6/, or simply execute `pachctl` in your terminal to explore the Pachyderm API. You can see an example on how to create pipelines here: https://github.com/phnmnl/MTBLS233-Pachyderm
 
 
   and if you want to ssh into the master node:
@@ -422,7 +422,7 @@ And then create the VRE:
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
     Pachyderm      = ssh into the master node and use pachctl
 
-  For information regarding the usage of pachctl please consult: http://docs.pachyderm.io/en/v1.6.6/, or simply execute `pachctl` in your terminal to explore the Pachyderm API. You can see an example on how to create pipelines here: https://github.com/pharmbio/MTBLS233-Pachyderm
+  For information regarding the usage of pachctl please consult: http://docs.pachyderm.io/en/v1.6.6/, or simply execute `pachctl` in your terminal to explore the Pachyderm API. You can see an example on how to create pipelines here: https://github.com/phnmnl/MTBLS233-Pachyderm
 
 
   and if you want to ssh into the master node:
