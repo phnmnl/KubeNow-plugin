@@ -111,7 +111,7 @@ In the provision-section of the config.tfvars config file
     Jupyter        = http://notebook.<your-prefix>.<yourdomain>
     Luigi          = http://luigi.<your-prefix>.<yourdomain>
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
-    Pachyderm      = ssh into the master node and use pachctl [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
+    Pachyderm      = ssh into the master node and use pachctl. Pachyderm tutorial: https://github.com/phnmnl/MTBLS233-Pachyderm
 
   and if you want to ssh into the master node:
 
@@ -209,7 +209,7 @@ In the provision-section of the config.tfvars config file
     Jupyter        = http://notebook.<your-prefix>.<yourdomain>
     Luigi          = http://luigi.<your-prefix>.<yourdomain>
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
-    Pachyderm      = ssh into the master node and use pachctl [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
+    Pachyderm      = ssh into the master node and use pachctl. Pachyderm tutorial: https://github.com/phnmnl/MTBLS233-Pachyderm
 
   and if you want to ssh into the master node:
 
@@ -307,7 +307,7 @@ In the provision-section of the config.tfvars config file
     Jupyter        = http://notebook.<your-prefix>.<yourdomain>
     Luigi          = http://luigi.<your-prefix>.<yourdomain>
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
-    Pachyderm      = ssh into the master node and use pachctl [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
+    Pachyderm      = ssh into the master node and use pachctl. Pachyderm tutorial: https://github.com/phnmnl/MTBLS233-Pachyderm
 
   and if you want to ssh into the master node:
 
@@ -405,7 +405,7 @@ In the provision-section of the config.tfvars config file
     Jupyter        = http://notebook.<your-prefix>.<yourdomain>
     Luigi          = http://luigi.<your-prefix>.<yourdomain>
     Kube-dashboard = http://dashboard.<your-prefix>.<yourdomain>
-    Pachyderm      = ssh into the master node and use pachctl [this page for tutorial on pachyderm](https://github.com/phnmnl/MTBLS233-Pachyderm)
+    Pachyderm      = ssh into the master node and use pachctl. Pachyderm tutorial: https://github.com/phnmnl/MTBLS233-Pachyderm
 
   and if you want to ssh into the master node:
 
