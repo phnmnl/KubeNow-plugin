@@ -60,15 +60,17 @@
         jupyter_include == true
 
     # Luigi
-    - name: Luigi
+    - name: Install Luigi
       include_role:
         name: roles/luigi
       vars:
+        luigi_chart_version: "0.1.1"
+        hostname: "{{domain}}"
         hostname: "{{luigi_hostname}}{{proxied_suffix}}"
         luigi_resource_req_memory: "1G"
         luigi_resource_req_cpu: "200m"
       when:
-        luigi_include == true
+        luigi_include  == true
 
     # Dashboard
     - name: Dashboard
