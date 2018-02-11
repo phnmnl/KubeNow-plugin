@@ -61,7 +61,6 @@ provision = {
       "jupyter_password"      = "password"
       "dashboard_username"    = "admin"
       "dashboard_password"    = "password"
-      "pvc_storage"           = "95Gi"
     }
   }
 
