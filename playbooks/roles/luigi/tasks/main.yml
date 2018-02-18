@@ -1,11 +1,14 @@
 ---
-- name: template luigi deployment file
-  template:
-    src: luigi-deployment-template.j2
-    dest: /tmp/luigi_deployment.yml
-
-- name: deploy luigi
+- name: add luigi repo
   command: >
-    kubectl
-    apply
-    -f /tmp/luigi_deployment.yml
+    helm repo add phenomenal-helm
+    https://phnmnl.github.io/helm-charts
+
+- name: install luigi
+  command: >
+    helm upgrade
+    --install
+    --version "{{ luigi_chart_version }}"
+    --set ingress.domain="{{domain}}",ingress.hostname="{{hostname}}",resources.requests.memory="{{luigi_resource_req_memory}}",resources.requests.cpu="{{luigi_resource_req_cpu}}"
+    "luigi-latest"
+    phenomenal-helm/luigi
