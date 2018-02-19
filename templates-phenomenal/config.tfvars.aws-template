@@ -79,9 +79,7 @@ provision = {
 #     "minio_secretkey"         = "mysecretkey"
 #     "minio_replicas"          = "4"
 #     "pachyderm_release_name"  = "pachyderm-release"
-#     "pachyderm_etcd_pvc_size" = "5G"
-#   }
-# }
+#     "pachyderm_etcd_pvc_size" = "5G" }}
 
 
 

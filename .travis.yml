@@ -106,8 +106,6 @@ before_script:
   - sed -i -e "s/#     "minio_replicas"/     "minio_replicas"/g" config.tfvars
   - sed -i -e "s/#     "pachyderm_release_name"/     "pachyderm_release_name"/g" config.tfvars
   - sed -i -e "s/#     "pachyderm_etcd_pvc_size"/     "pachyderm_etcd_pvc_size"/g" config.tfvars
-  - sed -i -e "s/#   }/   }/g" config.tfvars
-  - sed -i -e "s/# }/ }/g" config.tfvars
 
 
 script:
