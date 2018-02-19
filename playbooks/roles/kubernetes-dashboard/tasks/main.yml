@@ -8,12 +8,6 @@
   set_fact:
     dashboard_auth: "{{dashboard_username}}:{{hashed_password.stdout}}"
 
-- name: create dashboard yaml directory
-  file:
-    path: ~/.kubernetes-yaml/kubernetes-dashboard/
-    state: directory
-    mode: 0755
-
 # delete first is a workaround until kubernetes support apply -replace secret
 - name: "delete dashboard secret (if it already exists)"
   command: >
@@ -29,12 +23,21 @@
       --from-literal=auth='{{dashboard_auth}}'
   no_log: "{{ nologging }}"
 
-- name: copy dashboard deployment file
-  template:
-    src: kubernetes-dashboard.yaml
-    dest: ~/.kubernetes-yaml/kubernetes-dashboard/kubernetes-dashboard.yaml
+- name: create dashboard yaml directory for helm values file
+  file:
+    path: ~/.kubernetes-yaml/kubernetes-dashboard/
+    state: directory
+    mode: 0755
 
-- name: apply dashboard
+# render values yaml
+- name: copy dashboard values file
+  template:
+    src: helm-values.yaml
+    dest: ~/.kubernetes-yaml/kubernetes-dashboard/helm-values.yaml
+
+- name: install dashboard
   command: >
-    kubectl apply -f
-     $HOME/.kubernetes-yaml/kubernetes-dashboard/kubernetes-dashboard.yaml
+   helm upgrade --install \
+   --namespace kube-system \
+   --values ~/.kubernetes-yaml/kubernetes-dashboard/helm-values.yaml \
+   dashboard-stable stable/kubernetes-dashboard

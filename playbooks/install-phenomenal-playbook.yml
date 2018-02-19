@@ -79,7 +79,7 @@
       vars:
         dashboard_username: "{{dashboard_username}}"
         dashboard_password: "{{dashboard_password}}"
-        hostname: "{{dashboard_hostname}}{{proxied_suffix}}"
+        dashboard_host: "{{dashboard_hostname}}{{proxied_suffix}}.{{domain}}"
         nologging: "{{no_sensitive_logging}}"
       when:
         dashboard_include == true

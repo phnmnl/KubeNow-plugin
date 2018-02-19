@@ -1,0 +1,18 @@
+---
+ingress:
+  # If true, Kubernetes Dashboard Ingress will be created.
+  #
+  enabled: true
+
+  # Kubernetes Dashboard Ingress annotations
+  #
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    ingress.kubernetes.io/auth-type: "basic"
+    ingress.kubernetes.io/auth-secret: "dashboard-secret"
+
+  # Kubernetes Dashboard Ingress hostnames
+  # Must be provided if Ingress is enabled
+  #
+  hosts:
+  - "{{dashboard_host}}"

@@ -7,7 +7,7 @@ master_vcpu = "3"
 master_memory = "4096"
 master_as_edge = "true"
 
-*Storage configuration*
+# Storage configuration*
 master_extra_disk_size = "200" # Scratch disk size
 
 # Cloudflare configuration (optional)
