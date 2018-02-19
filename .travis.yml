@@ -95,6 +95,19 @@ before_script:
   #   sed -i -e
   #   "s/# cloudflare_subdomain = \"your-subdomain-name\"/cloudflare_subdomain = \"phnmnl-plugin-ci-${TRAVIS_BUILD_NUMBER}-${HOST_CLOUD}\"/g"
   #   config.tfvars
+  # Pachyderm
+  - sed -i -e "s/# "action"/ "action"/g" config.tfvars
+  - sed -i -e "s/#   "type"/   "type"/g" config.tfvars
+  - sed -i -e "s/#   "playbook"/   "playbook"/g" config.tfvars
+  - sed -i -e "s/#     "minio_release_name"/     "minio_release_name"/g" config.tfvars
+  - sed -i -e "s/#     "minio_pvc_size"/     "minio_pvc_size"/g" config.tfvars
+  - sed -i -e "s/#     "minio_accesskey"/     "minio_accesskey"/g" config.tfvars
+  - sed -i -e "s/#     "minio_secretkey"/     "minio_secretkey"/g" config.tfvars
+  - sed -i -e "s/#     "minio_replicas"/     "minio_replicas"/g" config.tfvars
+  - sed -i -e "s/#     "pachyderm_release_name"/     "pachyderm_release_name"/g" config.tfvars
+  - sed -i -e "s/#     "pachyderm_etcd_pvc_size"/     "pachyderm_etcd_pvc_size"/g" config.tfvars
+  - sed -i -e "s/#   }/   }/g" config.tfvars
+  - sed -i -e "s/# }/ }/g" config.tfvars
 
 
 script:
