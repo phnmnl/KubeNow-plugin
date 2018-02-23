@@ -37,7 +37,7 @@
         galaxy_image_tag: ":dev_v17.09-pheno-lr_cv1.5.131"
         galaxy_admin_password: "generate-random-passw"
         galaxy_admin_email: "your @ email.com"
-        galaxy_api_key: "{{galaxy_generated_key}}
+        galaxy_api_key: "{{galaxy_generated_key}}"
         galaxy_pvc: "{{pvc_name}}"
         postgres_pvc: "{{pvc_name}}"
         nologging: "{{no_sensitive_logging}}"
