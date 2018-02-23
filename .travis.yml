@@ -63,6 +63,8 @@ before_script:
 
   # Common
   - sed -i -e "s/your-cluster-prefix/phnmnl-plugin-ci-${TRAVIS_BUILD_NUMBER}-${HOST_CLOUD}/g" config.tfvars
+  - sed -i -e "s/\"password\"/\"${APPLICATIONS_PASSWORD}\"/g" config.tfvars
+  
   # AWS
   - sed -i -e "s/your-acces-key-id/${AWS_ACCESS_KEY_ID}/g" config.tfvars
   - sed -i -e "s#your-secret-access-key#${AWS_SECRET_ACCESS_KEY}#g" config.tfvars

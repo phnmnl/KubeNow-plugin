@@ -10,6 +10,7 @@
     luigi_hostname: "luigi"
     galaxy_include: true
     galaxy_hostname: "galaxy"
+    galaxy_generated_key: "{{lookup('password', 'galaxy-api-key length=25 chars=ascii_letters')}}"
     dashboard_include: true
     dashboard_hostname: "dashboard"
     # Storage
@@ -36,7 +37,7 @@
         galaxy_image_tag: ":dev_v17.09-pheno-lr_cv1.5.131"
         galaxy_admin_password: "generate-random-passw"
         galaxy_admin_email: "your @ email.com"
-        galaxy_api_key: "generate-galaxy-api-key"
+        galaxy_api_key: "{{galaxy_generated_key}}"
         galaxy_pvc: "{{pvc_name}}"
         postgres_pvc: "{{pvc_name}}"
         nologging: "{{no_sensitive_logging}}"
@@ -140,17 +141,3 @@
       delay: 5
       when:
         galaxy_include == true
-
-#    # Output message to user
-#    - name: Phenomenal deployment finished
-#      debug:
-#        msg:
-#          - 'Services should be reachable at following url:'
-#          - '-'
-#          - 'Galaxy:   http://{{galaxy_hostname}}{{proxied_suffix}}.{{domain}}'
-#          - 'Jupyter:  http://{{jupyter_hostname}}{{proxied_suffix}}.{{domain}}'
-#          - 'Galaxy:   http://{{luigi_hostname}}{{proxied_suffix}}.{{domain}}'
-#          - 'Luigi:    http://{{dashboard_hostname}}{{proxied_suffix}}.{{domain}}'
-#          - '-'
-#          - 'And if you want to ssh into master:'
-#          - 'kn ssh'
