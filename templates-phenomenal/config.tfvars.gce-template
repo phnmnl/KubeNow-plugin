@@ -58,8 +58,8 @@ provision = {
     "playbook" = "playbooks/install-phenomenal-playbook.yml"
     "extra_vars" = {
       "galaxy_admin_email"    = "yoourname@bla.bla.com"
-      "galaxy_admin_password" = "password"
-      "jupyter_password"      = "password"
+      "galaxy_admin_password" = "dash123pass789"
+      "jupyter_password"      = "dash123pass789"
       "dashboard_username"    = "admin"
       "dashboard_password"    = "dash123pass789"
     }
