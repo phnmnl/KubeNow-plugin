@@ -58,7 +58,7 @@ provision = {
       "galaxy_admin_password" = "password"
       "jupyter_password"      = "password"
       "dashboard_username"    = "admin"
-      "dashboard_password"    = "password"
+      "dashboard_password"    = "dash123pass789"
     }
   }
 
