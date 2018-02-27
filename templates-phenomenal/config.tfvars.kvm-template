@@ -36,13 +36,22 @@ provision = {
     }
   }
 
+  #"action" = {
+  #  "type"      = "ansible-playbook"
+  #  "playbook"  = "playbooks/install-shared-vol-nfs.yml"
+  #  "extra_vars" = {
+  #    "nfs_server"   = "x.x.x.x"
+  #    "nfs_vol_size" = "200"
+  #    "nfs_path"     = "/my-nfs-share"
+  #  }
+  #}
+
   "action" = {
     "type"       = "ansible-playbook"
     "playbook"   = "playbooks/create-pvc.yml"
     "extra_vars" = {
       "claim_name"      = "galaxy-pvc"
       "storage"         = "95Gi"
-      "storageClassName" = "local-storage"
     }
   }
 
