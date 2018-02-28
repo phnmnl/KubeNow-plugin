@@ -8,7 +8,7 @@ master_memory = "4096"
 master_as_edge = "true"
 
 # Storage configuration*
-master_extra_disk_size = "200" # Scratch disk size
+master_extra_disk_size = "100" # Scratch disk size in GB
 
 # Cloudflare configuration (optional)
 # use_cloudflare = "true"
@@ -32,7 +32,7 @@ provision = {
     "type"      = "ansible-playbook"
     "playbook"  = "playbooks/install-shared-vol-local.yml"
     "extra_vars" = {
-      "vol_size" = "200"
+      "vol_size" = "100G"
     }
   }
 
@@ -41,7 +41,7 @@ provision = {
   #  "playbook"  = "playbooks/install-shared-vol-nfs.yml"
   #  "extra_vars" = {
   #    "nfs_server"   = "x.x.x.x"
-  #    "nfs_vol_size" = "200"
+  #    "nfs_vol_size" = "90G"
   #    "nfs_path"     = "/my-nfs-share"
   #  }
   #}
@@ -51,7 +51,7 @@ provision = {
     "playbook"   = "playbooks/create-pvc.yml"
     "extra_vars" = {
       "claim_name"      = "galaxy-pvc"
-      "storage"         = "95Gi"
+      "storage"         = "90G"
     }
   }
 
