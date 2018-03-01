@@ -34,7 +34,7 @@
       vars:
         galaxy_chart_version: "0.3.5"
         hostname: "{{galaxy_hostname}}{{proxied_suffix}}"
-        galaxy_image_tag: ":dev_v17.09-pheno-lr_cv1.5.131"
+        galaxy_image_tag: ":v17.09-pheno-lr_cv1.6.175"
         galaxy_admin_password: "generate-random-passw"
         galaxy_admin_email: "your @ email.com"
         galaxy_api_key: "{{galaxy_generated_key}}"
@@ -51,7 +51,7 @@
       vars:
         jupyter_chart_version: "0.1.2"
         hostname: "{{jupyter_hostname}}{{proxied_suffix}}"
-        jupyter_image_tag: ":latest"
+        jupyter_image_tag: ":v387f29b6ca83_cv0.4.9"
         jupyter_password: "generate-random-passw"
         jupyter_pvc: "{{pvc_name}}"
         jupyter_resource_req_cpu: "200m"
@@ -66,7 +66,7 @@
         name: roles/luigi
       vars:
         luigi_chart_version: "0.1.1"
-        hostname: "{{domain}}"
+        luigi_image_tag: "dev_v2.6.0_cv0.1.7"
         hostname: "{{luigi_hostname}}{{proxied_suffix}}"
         luigi_resource_req_memory: "1G"
         luigi_resource_req_cpu: "200m"
