@@ -98,6 +98,13 @@ before_script:
   #   "s/# cloudflare_subdomain = \"your-subdomain-name\"/cloudflare_subdomain = \"phnmnl-plugin-ci-${TRAVIS_BUILD_NUMBER}-${HOST_CLOUD}\"/g"
   #   config.tfvars
 
+  # Pachyderm
+  # This searches for a line that ends with the string `pachyderm installation` and then goes into a loop where it removes `#` characters from
+  # the very start of the line, until it hits a line with no `#` at the start. `:a` defines a label named `a` and `ta` jumps to that label if
+  # the most recent `s` command made a modification. The `n` command prints the current "pattern space" (the buffer that holds the data) and
+  # reads the next line into the same space. (edited)
+  - sed -i -e '/pachyderm installation$/{:a;n;s/^#//;ta}' config.tfvars
+
 
 script:
 

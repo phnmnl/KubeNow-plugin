@@ -3,7 +3,7 @@
    command: >
      helm upgrade --install
      --version "0.1.4"
-     --set pachd.image.tag="{{ pachyderm_tag }}",pachd.worker.tag="{{ pachyderm_tag }}",etcd.image.tag="{{ etcd_tag }}",credentials=s3,s3.accessKey="{{ pachyderm_minio_accesskey }}",s3.secretKey="{{ pachyderm_minio_secretkey }}",s3.bucketName=defaultbucket,s3.endpoint="{{ minio_release_name }}"-minio-svc.default.svc.cluster.local:9000,s3.signature=0,etcd.persistence.enabled=true,etcd.persistence.accessMode=ReadWriteMany,etcd.persistence.size="{{ pachyderm_etcd_pvc_size }}",etcd.resources.requests.cpu=1,etcd.resources.requests.memory=2G,pachd.resources.requests.cpu=1,pachd.resources.requests.memory=2G,pachd.pfsCache=1G
+     --set pachd.image.tag="{{ pachyderm_tag }}",pachd.worker.tag="{{ pachyderm_tag }}",etcd.image.tag="{{ etcd_tag }}",credentials=s3,s3.accessKey="{{ pachyderm_minio_accesskey }}",s3.secretKey="{{ pachyderm_minio_secretkey }}",s3.bucketName=defaultbucket,s3.endpoint="{{ minio_release_name }}"-minio-svc.default.svc.cluster.local:9000,s3.signature=0,etcd.persistence.enabled=true,persistence.storageClass="{{ os_sc }}",etcd.persistence.accessMode=ReadWriteMany,etcd.persistence.size="{{ pachyderm_etcd_pvc_size }}",etcd.resources.requests.cpu=1,etcd.resources.requests.memory=2G,pachd.resources.requests.cpu=1,pachd.resources.requests.memory=2G,pachd.pfsCache=1G
      "{{ pachyderm_release_name }}" stable/pachyderm
 
  - name: wait for etcd to be Running
@@ -50,3 +50,10 @@
    become: yes
    apt:
      deb: https://github.com/pachyderm/pachyderm/releases/download/v1.6.6/pachctl_1.6.6_amd64.deb
+
+ - name: checking Pachyderm version
+   command: >
+     pachctl version
+   retries: 120
+   delay: 5
+
