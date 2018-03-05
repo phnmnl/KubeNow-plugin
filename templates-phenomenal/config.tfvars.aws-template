@@ -58,14 +58,16 @@ provision = {
     "type"     = "ansible-playbook"
     "playbook" = "playbooks/install-phenomenal-playbook.yml"
     "extra_vars" = {
+      "galaxy_include"        = "true"
       "galaxy_admin_email"    = "yoourname@bla.bla.com"
       "galaxy_admin_password" = "password"
+      "jupyter_include"       = "true"
       "jupyter_password"      = "password"
+      "dashboard_include"     = "false"
       "dashboard_username"    = "admin"
       "dashboard_password"    = "password"
     }
   }
-
 #
 # Optional pachyderm installation
 #
