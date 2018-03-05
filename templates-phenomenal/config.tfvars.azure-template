@@ -54,11 +54,14 @@ provision = {
     "type"     = "ansible-playbook"
     "playbook" = "playbooks/install-phenomenal-playbook.yml"
     "extra_vars" = {
+      "galaxy_include"        = "true"
       "galaxy_admin_email"    = "yoourname@bla.bla.com"
-      "galaxy_admin_password" = "dash123pass789"
-      "jupyter_password"      = "dash123pass789"
+      "galaxy_admin_password" = "password"
+      "jupyter_include"       = "true"
+      "jupyter_password"      = "password"
+      "dashboard_include"     = "false"
       "dashboard_username"    = "admin"
-      "dashboard_password"    = "dash123pass789"
+      "dashboard_password"    = "password"
     }
   }
 
@@ -75,7 +78,9 @@ provision = {
 #     "minio_secretkey"         = "mysecretkey"
 #     "minio_replicas"          = "4"
 #     "pachyderm_release_name"  = "pachyderm-release"
-#     "pachyderm_etcd_pvc_size" = "5G" }}
+#     "pachyderm_etcd_pvc_size" = "5G"
+#   }
+# }
 
   "action" = {
     "type"       = "local-exec"
