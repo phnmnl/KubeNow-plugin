@@ -95,18 +95,14 @@ before_script:
   #   sed -i -e
   #   "s/# cloudflare_subdomain = \"your-subdomain-name\"/cloudflare_subdomain = \"phnmnl-plugin-ci-${TRAVIS_BUILD_NUMBER}-${HOST_CLOUD}\"/g"
   #   config.tfvars
+
   # Pachyderm
-  - sed -i -e '/"action"/s/^#//g' config.tfvars
-  - sed -i -e '/"type"/s/^#//g' config.tfvars
-  - sed -i -e '/"playbook"/s/^#//g' config.tfvars
-  - sed -i -e '/"extra_vars"/s/^#//g' config.tfvars
-  - sed -i -e '/"minio_release_name"/s/^#//g' config.tfvars
-  - sed -i -e '/"minio_pvc_size"/s/^#//g' config.tfvars
-  - sed -i -e '/"minio_accesskey"/s/^#//g' config.tfvars
-  - sed -i -e '/"minio_secretkey"/s/^#//g' config.tfvars
-  - sed -i -e '/"minio_replicas"/s/^#//g' config.tfvars
-  - sed -i -e '/"pachyderm_release_name"/s/^#//g' config.tfvars
-  - sed -i -e '/"pachyderm_etcd_pvc_size"/s/^#//g' config.tfvars
+  # This searches for a line that ends with the string `pachyderm installation` and then goes into a loop where it removes `#` characters from
+  # the very start of the line, until it hits a line with no `#` at the start. `:a` defines a label named `a` and `ta` jumps to that label if
+  # the most recent `s` command made a modification. The `n` command prints the current "pattern space" (the buffer that holds the data) and
+  # reads the next line into the same space. (edited)
+  - sed -i -e '/pachyderm installation$/{:a;n;s/^#//;ta}' config.tfvars
+
 
 script:
 
