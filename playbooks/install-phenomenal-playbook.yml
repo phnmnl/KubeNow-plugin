@@ -65,7 +65,7 @@
       include_role:
         name: roles/luigi
       vars:
-        luigi_chart_version: "0.1.1"
+        luigi_chart_version: "0.1.2"
         luigi_image_tag: "dev_v2.6.0_cv0.1.7"
         hostname: "{{luigi_hostname}}{{proxied_suffix}}"
         luigi_resource_req_memory: "1G"
