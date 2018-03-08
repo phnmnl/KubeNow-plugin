@@ -1,14 +1,45 @@
 ---
+# create a basic-auth password hash
+- name: generate hashed password
+  command: "openssl passwd -apr1 {{luigi_password}}"
+  register: hashed_password
+
+- name: create basic-auth
+  set_fact:
+    luigi_auth: "{{luigi_username}}:{{hashed_password.stdout}}"
+
+# delete first is a workaround until kubernetes support apply -replace secret
+- name: "delete luigi secret (if it already exists)"
+  command: >
+    kubectl delete
+      --ignore-not-found
+      secret luigi-secret
+
+- name: create luigi password secret
+  command: >
+    kubectl create secret generic luigi-secret
+      --from-literal=auth='{{luigi_auth}}'
+
+- name: create luigi yaml directory for helm values file
+  file:
+    path: ~/.kubernetes-yaml/luigi/
+    state: directory
+    mode: 0755
+
+# render values yaml
+- name: copy helm values file
+  template:
+    src: helm-values.yaml
+    dest: ~/.kubernetes-yaml/luigi/helm-values.yaml
+
 - name: add luigi repo
   command: >
     helm repo add phenomenal-helm
-    https://phnmnl.github.io/helm-charts
+      https://phnmnl.github.io/helm-charts
 
 - name: install luigi
   command: >
-    helm upgrade
-    --install
-    --version "{{ luigi_chart_version }}"
-    --set image.tag="{{luigi_image_tag}}",ingress.domain="{{domain}}",ingress.hostname="{{hostname}}",resources.requests.memory="{{luigi_resource_req_memory}}",resources.requests.cpu="{{luigi_resource_req_cpu}}"
-    "luigi-latest"
-    phenomenal-helm/luigi
+    helm upgrade --install
+      --values ~/.kubernetes-yaml/luigi/helm-values.yaml \
+      "luigi" \
+      phenomenal-helm/luigi

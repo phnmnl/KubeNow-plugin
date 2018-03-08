@@ -1,0 +1,27 @@
+---
+image:
+  tag: "{{luigi_image_tag}}"
+
+resources:
+  requests:
+    memory: "{{luigi_resource_req_memory}}"
+    cpu: "{{luigi_resource_req_cpu}}"
+
+ingress:
+  # If true, Kubernetes Luigi Ingress will be created.
+  #
+  enabled: true
+
+  # Kubernetes Luigi Ingress annotations
+  #
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    ingress.kubernetes.io/auth-type: "basic"
+    ingress.kubernetes.io/auth-secret: "luigi-secret"
+
+  # Kubernetes Luigi Ingress hostnames
+  # Must be provided if Ingress is enabled
+  #
+  hostname: "{{hostname}}"
+
+  domain: "{{domain}}"
