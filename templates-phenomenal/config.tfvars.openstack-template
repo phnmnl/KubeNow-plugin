@@ -1,7 +1,7 @@
 # Cluster configuration
 cluster_prefix = "your-cluster-prefix" # Your cluster prefix
 external_network_uuid = "external-net-uuid" # The uuid of the external network in the OpenStack tenancy
-floating_ip_pool = "your-pool-name" # Usually same as external_network_uuid
+floating_ip_pool = "your-pool-name" # This is usually the same as the name of the external network
 
 # If you need a specific DNS server uncomment and provide its IP here,
 # or if your cloud provider blocks external nameservers,
