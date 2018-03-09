@@ -41,7 +41,7 @@ provision = {
   #  "playbook"  = "playbooks/install-shared-vol-nfs.yml"
   #  "extra_vars" = {
   #    "nfs_server"   = "x.x.x.x"
-  #    "nfs_vol_size" = "90G"
+  #    "nfs_vol_size" = "100G"
   #    "nfs_path"     = "/my-nfs-share"
   #  }
   #}
@@ -51,7 +51,7 @@ provision = {
     "playbook"   = "playbooks/create-pvc.yml"
     "extra_vars" = {
       "claim_name"      = "galaxy-pvc"
-      "storage"         = "90G"
+      "storage"         = "95G"
     }
   }
 
