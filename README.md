@@ -426,7 +426,7 @@ In the provision-section of the config.tfvars config file
 
 This tutorial provides an overview of the steps involved in setting up a CRE on a local server (bare metal) using command-line.
 
-**Note**: Please follow [[Starting a PhenoMeNal CRE on a public or private cloud provider|Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider]] for the general prerequisites for a deployment on a private of public cloud provider.
+**Note**: Please follow [Starting a PhenoMeNal CRE on a public or private cloud provider|(Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider) for the general prerequisites for a deployment on a private of public cloud provider.
 
 ## **Server specific prerequisites**
 
@@ -498,7 +498,7 @@ In the provision-section of the config.tfvars config file
 
 This tutorial provides an overview of the steps involved in setting up a CRE on EGI Federated Cloud using command-line.
 
-**Note**: Please follow [[Starting a PhenoMeNal CRE on a public or private cloud provider|Starting-a-PhenoMeNal-CRE-on-a-public-or-private-cloud-provider]] for the general prerequisites for a deployment on a private of public cloud provider.
+**Note**: Please follow [Prerequisites and installing the kn-client|(#prerequisites) for the general prerequisites for a deployment on a private of public cloud provider.
 
 ## **EGI Federated Cloud specific prerequisites**
 
