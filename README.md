@@ -2,7 +2,6 @@
 
 This tutorial is designed to help users to set up a PhenoNeNal CRE on [Amazon](https://github.com/phnmnl/phenomenal-h2020/wiki/Deploy-on-Amazon-Web-Services), [Google Cloud](https://github.com/phnmnl/phenomenal-h2020/wiki/Deploy-on-Google-Cloud-Platform), [Microsoft Azure](https://github.com/phnmnl/phenomenal-h2020/wiki/Deploy-on-Microsoft-Azure) or in a public or private [OpenStack](https://github.com/phnmnl/phenomenal-h2020/wiki/Deploy--on-OpenStack) environment through the command-line: Special cases (private OpenStack, or for developers) when you want to use the infrastructure provisioning procedure without the web GUI. Alternatively, use the [PhenoMeNal portal](http://portal.phenomenal-h2020.eu) to launch a CRE on your preferred cloud provider.
 
-
 ## Prerequisites
 
 The only prerequisite that need to be installed on your local machine is:
@@ -493,7 +492,7 @@ In the provision-section of the config.tfvars config file
   and to destroy use:
 
     kn destroy
-    
+
 # Deploy on EGI Federated Cloud
 
 This tutorial provides an overview of the steps involved in setting up a CRE on EGI Federated Cloud using command-line.
@@ -503,7 +502,7 @@ This tutorial provides an overview of the steps involved in setting up a CRE on 
 ## **EGI Federated Cloud specific prerequisites**
 
 Start by creating an openstack configuration directory:
-    
+
     kn --preset phenomenal init openstack my-vre-config-dir
     cd my-vre-config-dir
 
