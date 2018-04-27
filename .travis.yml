@@ -10,8 +10,6 @@ branches:
   except:
     - /^experimental\/.*$/
     - /^exp\/.*$/
-    - /^development\/.*$/
-    - /^dev\/.*$/
     - /^testing\/.*$/
     - /^test\/.*$/
     - /^doc\/.*$/
@@ -20,8 +18,7 @@ branches:
 
 env:
   global:
-    - KN_BRANCH="phenomenal/stable"
-    - PROVISIONER="phenomenal/provisioners:phenomenal-stable"
+    - KN_BRANCH="development/phenomenal-dalcotidine"
     - PRESET="phenomenal"
 
   matrix:
@@ -40,9 +37,7 @@ before_install:
 
 install:
 
-  # Build Docker image
-  # Create a docker image tag out of branch-name where / is replaced by -
-  - docker build -t "$PROVISIONER" .
+  # Nothing for now
 
 before_script:
 
@@ -114,19 +109,4 @@ script:
 after_script:
   - export TERRAFORM_OPT="-force" && travis_retry kn destroy
   - travis_retry terraform destroy -force "$HOST_CLOUD" # in case there is some problem with kn
-
-jobs:
-  include:
-    # Docker push stage
-    - stage: Push container
-      before_install: true
-      install: true
-      before_script: true
-      after_script: true
-      script:
-        # Build and push Docker image (needs to be build again in this stage)
-        - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-        - docker build -t $PROVISIONER .
-        - docker push $PROVISIONER
-        - docker push $PROVISIONER
 
