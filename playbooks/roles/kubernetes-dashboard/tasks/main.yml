@@ -37,7 +37,9 @@
 
 - name: install dashboard
   command: >
-   helm upgrade --install \
-   --namespace kube-system \
-   --values ~/.kubernetes-yaml/kubernetes-dashboard/helm-values.yaml \
-   dashboard-stable stable/kubernetes-dashboard
+   helm upgrade --install
+   --namespace kube-system
+   --values ~/.kubernetes-yaml/kubernetes-dashboard/helm-values.yaml
+   --version "{{ dashboard_chart_version }}"
+   "dashboard-{{ dashboard_chart_version }}"
+   stable/kubernetes-dashboard

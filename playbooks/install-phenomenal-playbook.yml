@@ -80,6 +80,7 @@
       include_role:
         name: roles/kubernetes-dashboard
       vars:
+        dashboard_chart_version: "0.6.8"
         dashboard_username: "{{dashboard_username}}"
         dashboard_password: "{{dashboard_password}}"
         dashboard_host: "{{dashboard_hostname}}{{proxied_suffix}}.{{domain}}"

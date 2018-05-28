@@ -40,6 +40,7 @@
 - name: install luigi
   command: >
     helm upgrade --install
-      --values ~/.kubernetes-yaml/luigi/helm-values.yaml \
-      "luigi" \
+      --values ~/.kubernetes-yaml/luigi/helm-values.yaml
+      --version "{{ luigi_chart_version }}"
+      "luigi-{{ luigi_chart_version }}"
       phenomenal-helm/luigi

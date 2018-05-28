@@ -11,5 +11,7 @@
     helm upgrade
     --install
     --set galaxy_image_tag="{{ galaxy_image_tag }}",use_ingress="yes",rbac_needed="true",galaxy_backend_postgres=true,hostname="{{ hostname }}",domain="{{ domain }}",external_ingress_controller="yes",galaxy_admin_email="{{ galaxy_admin_email }}",galaxy_admin_password="{{ galaxy_admin_password }}",galaxy_api_key="{{ galaxy_api_key }}",postgres.db_password="{{ galaxy_admin_password }}",galaxy_pvc="{{ galaxy_pvc }}",postgres.postgres_pvc="{{ postgres_pvc }}",galaxy_create_pvc="false"
-    --version "{{ galaxy_chart_version }}" "galaxy-{{ galaxy_chart_version }}" galaxy-helm-repo/galaxy
+    --version "{{ galaxy_chart_version }}"
+    "galaxy-{{ galaxy_chart_version }}"
+    galaxy-helm-repo/galaxy
   no_log: "{{ nologging }}"
