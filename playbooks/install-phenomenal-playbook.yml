@@ -92,6 +92,8 @@
     - name: Heapster (for Dashboard)
       include_role:
         name: roles/heapster
+      vars:
+        heapster_chart_version: "0.2.7"
       when:
         dashboard_include | bool == true
 

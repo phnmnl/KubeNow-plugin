@@ -3,4 +3,6 @@
   command: >
    helm upgrade --install \
    --namespace kube-system \
-   heapster-stable stable/heapster
+   --version "{{ heapster_chart_version }}"
+   "heapster-{{ heapster_chart_version }}"
+   stable/heapster
