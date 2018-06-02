@@ -1,22 +1,21 @@
-- name: "Copy helm yaml template for Galaxy."
+- name: copy helm yaml template for Galaxy
   template:
-    src: phenomenal-cerebellin-17.09-ingress.yaml.j2
-    dest: ~/phenomenal-cerebellin-17.09-ingress.yaml
+    src: galaxy-helm-values.yaml.j2
+    dest: ~/galaxy-helm-values.yaml
 
 - name: add galaxy repo
   command: >
     helm repo add galaxy-helm-repo
-    https://pcm32.github.io/galaxy-helm-charts
+      https://pcm32.github.io/galaxy-helm-charts
 
 - name: install galaxy
   command: >
-      helm upgrade --install -f ~/phenomenal-cerebellin-17.09-ingress.yaml
-      --version "{{ galaxy_chart_version }}" "gs" galaxy-helm-repo/galaxy-stable
+    helm upgrade --install -f ~/galaxy-helm-values.yaml
+      --version "{{ galaxy_chart_version }}" "galaxy-stable" galaxy-helm-repo/galaxy-stable
   no_log: "{{ nologging }}"
 
 - name: expose proftpd on desired port
-  command: >
-    iptables -t nat -A PREROUTING -p tcp -i "{{ ansible_default_ipv4.interface }}" --dport "{{ proftpd_port }}"
-          -j REDIRECT --to-ports 30722
   become: yes
-  no_log: "{{ nologging }}"
+  command: >
+    iptables -t nat -A PREROUTING -p tcp -i "{{ hostvars[inventory_hostname].ansible_host }}" --dport "{{ proftpd_port }}"
+      -j REDIRECT --to-ports 30722
