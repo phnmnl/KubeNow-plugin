@@ -14,7 +14,6 @@ The only prerequisite that need to be installed on your local machine is:
     sudo chmod +x /usr/local/bin/kn
 
 
-
 Now follow the links below depending on your cloud provider:
 
 [Deploy on Amazon Web Services](#deploy-on-amazon-web-services)
