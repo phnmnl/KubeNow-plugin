@@ -20,7 +20,7 @@ env:
   global:
     - KN_BRANCH="phenomenal/stable"
     - KN_PLUGIN_NAME="phenomenal"
-    - KN_PLUGIN_REPO="https://github.com/phnmnl/plugin-KubeNow"
+    - KN_PLUGIN_REPO="https://github.com/phnmnl/KubeNow-plugin.git"
     - KN_PLUGIN_REPO_BRANCH="feature/galaxy-stable-chart-17.09"
 
   matrix:
