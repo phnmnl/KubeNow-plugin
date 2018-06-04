@@ -41,5 +41,5 @@
    --namespace kube-system
    --values ~/.kubernetes-yaml/kubernetes-dashboard/helm-values.yaml
    --version "{{ dashboard_chart_version }}"
-   "dashboard-{{ dashboard_chart_version }}"
+   "kubernetes-dashboard"
    stable/kubernetes-dashboard
