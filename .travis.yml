@@ -19,7 +19,9 @@ branches:
 env:
   global:
     - KN_BRANCH="phenomenal/stable"
-    - PRESET="phenomenal"
+    - KN_PLUGIN_REPO="https://github.com/phnmnl/KubeNow-plugin.git"
+    - KN_PLUGIN_NAME="phnmnl/KubeNow-plugin"
+    - KN_PLUGIN_REPO_BRANCH="$TRAVIS_BRANCH"
 
   matrix:
     - HOST_CLOUD=openstack
@@ -47,7 +49,7 @@ before_script:
   - sudo chmod +x /usr/local/bin/kn
 
   # Init test deployment
-  - kn --preset $PRESET init ${HOST_CLOUD} test-deployment
+  - kn init ${HOST_CLOUD} test-deployment
   - cd test-deployment
 
   # Overwrite ssh-key for debug purposes

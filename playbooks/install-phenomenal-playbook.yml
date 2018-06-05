@@ -1,7 +1,7 @@
 ---
 - name: Installs phenomenal services
   hosts: master
-  gather_facts: "no"
+  gather_facts: "yes"
   vars:
     # Services
     jupyter_include: "true"
@@ -32,9 +32,7 @@
       include_role:
         name: roles/galaxy
       vars:
-        galaxy_chart_version: "0.3.5"
         hostname: "{{galaxy_hostname}}{{proxied_suffix}}"
-        galaxy_image_tag: ":dev_v17.09-pheno-lr_cv1.6.190"
         galaxy_admin_password: "generate-random-passw"
         galaxy_admin_email: "your @ email.com"
         galaxy_api_key: "{{galaxy_generated_key}}"
