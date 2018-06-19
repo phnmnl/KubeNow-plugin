@@ -2,11 +2,22 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: gluster-heketi
+  name: sc-pg-optimized
   namespace: storage-heketi
   annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
+    storageclass.kubernetes.io/is-default-class: "false"
 provisioner: kubernetes.io/glusterfs
 parameters:
   resturl: "http://{{ heketi_endpoint }}"
   volumetype: {{volumetype}}
+  volumeoptions:
+    performance.quick-read off, performance.read-ahead off,
+    performance.io-cache off, performance.stat-prefetch off,
+    performance.low-prio-threads 32, network.remote-dio enable,
+    cluster.eager-lock enable, disperse.eager-lock enable,
+    cluster.quorum-type auto, cluster.server-quorum-type server,
+    cluster.data-self-heal-algorithm full, cluster.locking-scheme granular,
+    cluster.shd-wait-qlength 10000, features.shard on, user.cifs off
+mountOptions:
+  - entry-timeout=0
+  - attribute-timeout=0

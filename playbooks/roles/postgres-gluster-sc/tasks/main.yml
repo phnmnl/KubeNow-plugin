@@ -36,7 +36,7 @@
 
 - name: render storage-class-pg-optimized
   template:
-    src: storage-class.yml
+    src: storage-class-pg-optimized.yml
     dest: "~/.kubernetes-yaml/heketi/storage-class-pg-optimized.yml"
 
 - name: create storage-class-pg-optimized
