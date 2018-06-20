@@ -47,10 +47,25 @@ provision = {
 
   "action" = {
     "type"      = "ansible-playbook"
+    "playbook"  = "plugins/phnmnl/KubeNow-plugin/playbooks/create-postgres-sc.yml"
+  }
+
+  "action" = {
+    "type"      = "ansible-playbook"
     "playbook"  = "playbooks/create-pvc.yml"
     "extra_vars" = {
       "claim_name"      = "galaxy-pvc"
-      "storage"         = "95G"
+      "storage"         = "90G"
+    }
+  }
+
+  "action" = {
+    "type"      = "ansible-playbook"
+    "playbook"  = "playbooks/create-pvc.yml"
+    "extra_vars" = {
+      "claim_name"       = "postgres-pvc"
+      "storage"          = "5G"
+      "storageClassName" = "sc-pg-optimized"
     }
   }
 

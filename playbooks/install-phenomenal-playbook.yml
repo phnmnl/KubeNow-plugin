@@ -1,7 +1,7 @@
 ---
 - name: Installs phenomenal services
   hosts: master
-  gather_facts: "yes"
+  gather_facts: "no"
   vars:
     # Services
     jupyter_include: "true"
@@ -15,6 +15,7 @@
     dashboard_hostname: "dashboard"
     # Storage
     pvc_name: "galaxy-pvc"
+    postgres_pvc_name: "postgres-pvc"
     # Domain
     cloudflare_proxied: "false"
     proxied_suffix: ""
@@ -37,7 +38,7 @@
         galaxy_admin_email: "your @ email.com"
         galaxy_api_key: "{{galaxy_generated_key}}"
         galaxy_pvc: "{{pvc_name}}"
-        postgres_pvc: "{{pvc_name}}"
+        postgres_pvc: "{{postgres_pvc_name}}"
         nologging: "{{no_sensitive_logging}}"
       when:
         galaxy_include | bool  == true
