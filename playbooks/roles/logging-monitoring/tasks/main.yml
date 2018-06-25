@@ -6,7 +6,7 @@
     state: directory
     mode: 0755
 
-# Render Logmon yaml - For time being, contains only namespace resource
+# Render Logmon yaml - For time being, contains only the namespace resource
 - name: copy logmon yaml file
   template:
     src: logmon.yaml
