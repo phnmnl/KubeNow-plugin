@@ -1,0 +1,91 @@
+---
+# Create yaml directory for values.yaml files
+- name: create logmon yaml directory for helm values file
+  file:
+    path: ~/.kubernetes-yaml/logmon/
+    state: directory
+    mode: 0755
+
+# Render Logmon yaml - For time being, contains only namespace resource
+- name: copy logmon yaml file
+  template:
+    src: logmon.yaml
+    dest: ~/.kubernetes-yaml/logmon/logmon.yaml
+
+# Create namespace for logging and monitoring
+- name: create logging and monitoring kubernetes namespaces
+  command: >
+    kubectl apply -f ~/.kubernetes-yaml/logmon/logmon.yaml
+
+# Create a basic-auth password hash
+- name: generate logmon hashed password
+  command: "openssl passwd -apr1 {{logmon_password}}"
+  register: hashed_password
+
+- name: create logmon basic-auth
+  set_fact:
+    logmon_auth: "{{logmon_username}}:{{hashed_password.stdout}}"
+
+# This delete is a workaround until kubernetes support apply -replace secret
+- name: delete logmon secret (if it already exists)
+  command: >
+    kubectl delete
+    --ignore-not-found
+    --namespace=logmon
+    secret logmon-secret
+  no_log: "{{ nologging }}"
+
+# Create password secret
+- name: create logmon password secret
+  command: >
+    kubectl --namespace=logmon create secret generic logmon-secret
+      --from-literal=auth='{{logmon_auth}}'
+  no_log: "{{ nologging }}"
+
+# Render EFK values yaml
+- name: copy logmon values file - EFK stack
+  template:
+    src: efk-helm-values.yaml
+    dest: ~/.kubernetes-yaml/logmon/efk-helm-values.yaml
+
+# Render Prometheus values yaml
+- name: copy logmon values file - Prometheus
+  template:
+    src: prometheus-helm-values.yaml
+    dest: ~/.kubernetes-yaml/logmon/prometheus-helm-values.yaml
+
+# Render Grafana values yaml
+- name: copy logmon values file - Grafana
+  template:
+    src: grafana-helm-values.yaml
+    dest: ~/.kubernetes-yaml/logmon/grafana-helm-values.yaml
+
+# Cloning EFK stack repo
+- name: cloning EFK stack GitHub repository
+  git:
+    repo: https://github.com/cdwv/efk-stack-helm
+    dest: efk-stack
+    
+# Installing EFK stach chart
+- name: install logging stack - EFK helm chart
+  command: >
+    helm upgrade "efk" efk-stack --install
+    --namespace logmon
+    --values ~/.kubernetes-yaml/logmon/efk-helm-values.yaml
+    --version "{{ efk_version }}"
+
+# Installing Prometheus chart as monitoring tool
+- name: install monitoring tools - Prometheus helm chart
+  command: >
+    helm upgrade "prometheus" stable/prometheus --install
+    --namespace logmon
+    --values ~/.kubernetes-yaml/logmon/prometheus-helm-values.yaml
+    --version "{{ prometheus_version }}"
+
+# Installing Grafana chart as monitoring tool
+- name: install monitoring tools - Grafana helm chart
+  command: >
+    helm upgrade "grafana" stable/grafana --install
+    --namespace logmon
+    --values ~/.kubernetes-yaml/logmon/grafana-helm-values.yaml
+    --version "{{ grafana_version }}"

@@ -1,0 +1,45 @@
+---
+- name: Logging and monitoring  services
+  hosts: master
+  gather_facts: "no"
+  vars:
+    # Services
+    efk_hostname: "kibana"
+    prometheus_hostname: "prometheus"
+    grafana_hostname: "grafana"
+    
+    # Domain
+    cloudflare_proxied: "false"
+    proxied_suffix: ""
+    
+    # Logging
+    no_sensitive_logging: "false"
+
+  tasks:
+    # Logging and Monitoring for Kubernetes
+    - name: EFK stack, Prometheus and Grafana
+      include_role:
+        name: roles/logging-monitoring
+      vars:
+        # Common vars
+        # Generated secrets used by both Kibana, Prometheus and Grafana
+        logmon_username: "{{logmon_username}}"
+        logmon_password: "{{logmon_password}}"
+        # Default domain to be used for Ingress hosts
+        base_domain: "{{proxied_suffix}}.{{domain}}"
+        # For disabling or enabling sensitive logging option
+        nologging: "{{no_sensitive_logging}}"
+        
+        # Logging - EFK stack vars
+        efk_host: "{{efk_hostname}}{{proxied_suffix}}.{{domain}}"
+        efk_version: "6.2.4"
+        
+        # Monitoring vars
+        # Prometheus
+        prometheus_host: "{{prometheus_hostname}}{{proxied_suffix}}.{{domain}}"
+        prometheus_version: "6.7.2"
+        
+        # Grafana
+        grafana_host: "{{grafana_hostname}}{{proxied_suffix}}.{{domain}}"
+        grafana_version: "1.11.0"
+

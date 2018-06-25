@@ -18,6 +18,7 @@ branches:
 
 env:
   global:
+    - TIMEOUT=2250
     - KN_BRANCH="phenomenal/stable"
     - KN_PLUGIN_REPO="https://github.com/phnmnl/KubeNow-plugin.git"
     - KN_PLUGIN_NAME="phnmnl/KubeNow-plugin"
