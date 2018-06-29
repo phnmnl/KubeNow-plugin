@@ -76,8 +76,8 @@ postgres_for_galaxy:
   db_password: "{{ galaxy_admin_password }}"
   postgres_pvc: "{{ postgres_pvc }}"
   subpath: "postgres"
-  postgres_image: "pcm32/galaxy-postgres"
-  postgres_image_tag: ":latest"
+  postgres_image: "container-registry.phenomenal-h2020.eu/phnmnl/galaxy-postgres"
+  postgres_image_tag: ":9.6.5_for_18.01"
 proftpd:
   generate_ssh_key: true
   image:
