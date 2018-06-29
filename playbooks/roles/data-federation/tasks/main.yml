@@ -1,0 +1,57 @@
+---
+# Create yaml directory for values.yaml files
+- name: create data-federation yaml directory for helm values file
+  file:
+    path: ~/.kubernetes-yaml/data-federation/
+    state: directory
+    mode: 0755
+
+# Render federation yaml - For time being, contains only the namespace resource
+- name: copy federation yaml file
+  template:
+    src: federation.yaml
+    dest: ~/.kubernetes-yaml/data-federation/federation.yaml
+
+# Create namespace for federation tools
+- name: create federation kubernetes namespaces
+  command: >
+    kubectl apply -f ~/.kubernetes-yaml/data-federation/federation.yaml
+
+# Create a basic-auth password hash
+- name: generate federation hashed password
+  command: "openssl passwd -apr1 {{federation_password}}"
+  register: hashed_password
+
+- name: create federation basic-auth
+  set_fact:
+    federation_auth: "{{federation_username}}:{{hashed_password.stdout}}"
+
+# This delete is a workaround until kubernetes support apply -replace secret
+- name: delete federation secret (if it already exists)
+  command: >
+    kubectl delete
+    --ignore-not-found
+    --namespace=federation
+    secret federation-secret
+  no_log: "{{ nologging }}"
+
+# Create password secret
+- name: create federation password secret
+  command: >
+    kubectl --namespace=federation create secret generic federation-secret
+      --from-literal=auth='{{federation_auth}}'
+  no_log: "{{ nologging }}"
+
+# Render Owncloud values yaml
+- name: copy owncloud values file
+  template:
+    src: owncloud-helm-values.yaml
+    dest: ~/.kubernetes-yaml/data-federation/owncloud-helm-values.yaml
+
+# Installing Owncloud chart as data federation tool
+- name: install data federation tool - Owncloud helm chart
+  command: >
+    helm upgrade "owncloud" stable/owncloud --install
+    --namespace federation
+    --values ~/.kubernetes-yaml/data-federation/owncloud-helm-values.yaml
+    --version "{{ owncloud_version }}"
