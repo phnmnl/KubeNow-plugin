@@ -62,7 +62,7 @@ before_script:
   # Common
   - sed -i -e "s/your-cluster-prefix/phnmnl-plugin-ci-${TRAVIS_BUILD_NUMBER}-${HOST_CLOUD}/g" config.tfvars
   - sed -i -e "s/\"password\"/\"${APPLICATIONS_PASSWORD}\"/g" config.tfvars
-
+  
   # AWS
   - sed -i -e "s/your-acces-key-id/${AWS_ACCESS_KEY_ID}/g" config.tfvars
   - sed -i -e "s#your-secret-access-key#${AWS_SECRET_ACCESS_KEY}#g" config.tfvars
@@ -85,7 +85,11 @@ before_script:
   # Enable edges
   # - sed -i -e "s/# edge/edge/g" config.tfvars
   # Enable glusternodes
-  - sed -i -e "s/# glusternode/glusternode/g" config.tfvars
+  - sed -i -e 's/# glusternode/glusternode/g' config.tfvars
+  # Enable dashboard and logmon
+  - sed -i -e 's/\"dashboard_include.*false\"/\"dashboard_include\" = \"true\"/g' config.tfvars
+  - sed -i -e 's/\"logmon_include.*false\"/\"logmon_include\" = \"true\"/g' config.tfvars
+  
   # Cloudflare
   # - sed -i -e "s/# use_cloudflare/use_cloudflare/g" config.tfvars
   # - sed -i -e "s/# cloudflare_email = \"your-cloudflare-email\"/cloudflare_email = \"${CI_CLOUDFLARE_EMAIL}\"/g" config.tfvars
