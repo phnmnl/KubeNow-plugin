@@ -6,6 +6,10 @@ galaxy_res_limits_cpu: "2"
 galaxy_res_limits_memory: "2Gi"
 galaxy_res_requests_cpu: "500m"
 galaxy_res_requests_memory: "500Mi"
+
+postgres_image: "container-registry.phenomenal-h2020.eu/phnmnl/galaxy-postgres"
+postgres_image_tag: ":9.6.5_for_18.01"
+
 proftpd_image: "container-registry.phenomenal-h2020.eu/phnmnl/galaxy-proftpd"
 proftpd_image_tag: "for_galaxy_v18.01"
 proftpd_port: 44
