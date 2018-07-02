@@ -51,9 +51,11 @@ provision = {
       "dashboard_include"     = "false"
       "dashboard_username"    = "admin"
       "dashboard_password"    = "password"
+      "logmon_include"        = "false"
+      "logmon_username"       = "admin"
+      "logmon_password"       = "password"
     }
   }
-
 #
 # Optional pachyderm installation
 #
