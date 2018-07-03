@@ -19,7 +19,7 @@ node_vm_size = "Standard_DS2_v2"
 # Gluster configuration
 glusternode_count = "1"
 glusternode_vm_size = "Standard_DS2_v2"
-glusternode_extra_disk_size = "150" # Size in GB
+glusternode_extra_disk_size = "200" # Size in GB
 
 # Edge configuration (optional)
 # edge_count   = "2"

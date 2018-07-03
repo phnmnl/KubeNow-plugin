@@ -20,7 +20,7 @@ node_flavor = "your-node-flavor"
 # Gluster configuration
 glusternode_count = "1"
 glusternode_flavor = "your-glusternode-flavor"
-glusternode_extra_disk_size = "150" # Size in GB
+glusternode_extra_disk_size = "200" # Size in GB
 
 # Edge configuration
 # edge_count = "2"

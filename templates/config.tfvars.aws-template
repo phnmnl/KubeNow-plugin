@@ -21,7 +21,7 @@ node_disk_size = "20" # Size in GB
 glusternode_count = "1"
 glusternode_instance_type = "t2.medium"
 glusternode_disk_size = "20" # Size in GB
-glusternode_extra_disk_size = "150" # Size in GB
+glusternode_extra_disk_size = "200" # Size in GB
 
 # Edge configuration (optional)
 # edge_count = "2"
