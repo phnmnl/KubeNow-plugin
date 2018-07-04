@@ -2,6 +2,7 @@
 cluster_prefix = "your-cluster-prefix" # Your cluster prefix
 
 # Google credetials
+gce_credentials_file = "service-account.json" # Has to be stored in the config-dir
 gce_project = "your_project_id" # Google project id
 gce_zone = "europe-west1-c" # Some GCE zone
 
