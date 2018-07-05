@@ -1,0 +1,44 @@
+#--------------------------------------------------------
+adminPassword: "{{logmon_password}}"
+
+ingress:
+  # If true, Grafana Ingress will be created.
+  enabled: true
+
+  # Grafana Ingress annotations for its dashboard
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    ingress.kubernetes.io/auth-type: "basic"
+    ingress.kubernetes.io/auth-secret: "logmon-secret"
+    
+  # Service Port
+  service:
+    port:: 8081
+
+  # Grafana Dashboard Ingress hostnames
+  # Must be provided if Ingress is enabled
+  hosts:
+    - "{{grafana_host}}"
+
+## Enable persistence using Persistent Volume Claims
+## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+##
+persistence:
+  enabled: true
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+  annotations: {}
+  subPath: ""
+  #existingClaim:
+
+plugins: "grafana-piechart-panel,grafana-clock-panel"
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi

@@ -1,0 +1,18 @@
+rbac:
+ enabled: true
+#--------------------------------------------------------
+kibana:
+  ingress:
+    # If true, EFK Ingress will be created.
+    enabled: true
+
+    # EFK Ingress annotations - Mostly for Kibana Dashboard
+    annotations:
+      kubernetes.io/ingress.class: "traefik"
+      ingress.kubernetes.io/auth-type: "basic"
+      ingress.kubernetes.io/auth-secret: "logmon-secret"
+
+    # EFK Ingress hostnames for Kibana Dashboard
+    # Must be provided if Ingress is enabled
+    hosts:
+      - "{{efk_host}}"

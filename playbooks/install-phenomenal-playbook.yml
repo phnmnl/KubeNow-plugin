@@ -13,6 +13,10 @@
     galaxy_generated_key: "{{lookup('password', 'galaxy-api-key length=25 chars=ascii_letters')}}"
     dashboard_include: "true"
     dashboard_hostname: "dashboard"
+    efk_hostname: "kibana"
+    prometheus_hostname: "prometheus"
+    grafana_hostname: "grafana"
+    logmon_include: "false"
     # Storage
     pvc_name: "galaxy-pvc"
     postgres_pvc_name: "postgres-pvc"
@@ -95,7 +99,37 @@
         heapster_chart_version: "0.2.7"
       when:
         dashboard_include | bool == true
-
+        
+        
+    # Logging and Monitoring for Kubernetes
+    - name: EFK stack, Prometheus and Grafana
+      include_role:
+        name: roles/logging-monitoring
+      vars:
+        # Common vars
+        # Generated secrets used by both Kibana, Prometheus and Grafana
+        logmon_username: "{{logmon_username}}"
+        logmon_password: "{{logmon_password}}"
+        # Default domain to be used for Ingress hosts
+        base_domain: "{{proxied_suffix}}.{{domain}}"
+        # For disabling or enabling sensitive logging option
+        nologging: "{{no_sensitive_logging}}"
+        
+        # Logging - EFK stack vars
+        efk_host: "{{efk_hostname}}{{proxied_suffix}}.{{domain}}"
+        efk_version: "6.2.4"
+        
+        # Monitoring vars
+        # Prometheus
+        prometheus_host: "{{prometheus_hostname}}{{proxied_suffix}}.{{domain}}"
+        prometheus_version: "6.7.2"
+        
+        # Grafana
+        grafana_host: "{{grafana_hostname}}{{proxied_suffix}}.{{domain}}"
+        grafana_version: "1.11.0"
+      when:
+        logmon_include | bool == true  
+        
     # Add demo-data to jupyter from repo
     - name: Add mtbls233 data
       include_role:
