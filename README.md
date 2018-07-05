@@ -13,7 +13,6 @@ The only prerequisite that need to be installed on your local machine is:
     sudo mv /tmp/kn /usr/local/bin/
     sudo chmod +x /usr/local/bin/kn
 
-
 Now follow the links below depending on your cloud provider:
 
 [Deploy on Amazon Web Services](https://github.com/phnmnl/phenomenal-h2020/wiki/Deploy-on-Amazon-Web-Services)
