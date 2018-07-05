@@ -1,10 +1,5 @@
 ---
  - name: install Pachyderm
-   vars:
-     etcd_requests_cpu: "1"
-     etcd_requests_mem: "2G"
-     pachd_requests_cpu: "1"
-     pachd_requests_mem: "2G"
    command: >
      helm upgrade --install
      --version "0.1.4"
