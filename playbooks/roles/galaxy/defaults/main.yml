@@ -1,4 +1,4 @@
-galaxy_chart_version: "1.5.5"
+galaxy_chart_version: "1.6.0"
 galaxy_image_tag: "rc_v18.01-pheno-isa_cv1.7.245"
 galaxy_init_image: "container-registry.phenomenal-h2020.eu/phnmnl/galaxy-init-pheno-flavoured"
 galaxy_image: "container-registry.phenomenal-h2020.eu/phnmnl/galaxy-web-k8s"
