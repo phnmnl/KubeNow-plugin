@@ -5,3 +5,6 @@
 inventory
 **/*.retry
 test-deployment
+
+# Editor backup files
+*~
