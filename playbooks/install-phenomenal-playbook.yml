@@ -158,8 +158,8 @@
       vars:
         url: "http://{{luigi_hostname}}{{proxied_suffix}}.{{domain}}"
         pod_name: "luigi"
-        auth_user: "{{luigi_username}}"
-        auth_password: "{{luigi_password}}"
+        auth_user: "{{username_all_services}}"
+        auth_password: "{{password_all_services}}"
         force_auth: "yes"
       when:
         luigi_include | bool == true
