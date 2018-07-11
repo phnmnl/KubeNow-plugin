@@ -38,7 +38,7 @@
         name: roles/galaxy
       vars:
         hostname: "{{galaxy_hostname}}{{proxied_suffix}}"
-        galaxy_admin_password: "generate-random-passw"
+        galaxy_admin_password: "{{password_all_services}}"
         galaxy_admin_email: "your @ email.com"
         galaxy_api_key: "{{galaxy_generated_key}}"
         galaxy_pvc: "{{pvc_name}}"
@@ -55,7 +55,7 @@
         jupyter_chart_version: "0.1.2"
         hostname: "{{jupyter_hostname}}{{proxied_suffix}}"
         jupyter_image_tag: ":v387f29b6ca83_cv0.4.9"
-        jupyter_password: "generate-random-passw"
+        jupyter_password: "{{password_all_services}}"
         jupyter_pvc: "{{pvc_name}}"
         jupyter_resource_req_cpu: "200m"
         jupyter_resource_req_memory: "1G"
@@ -70,8 +70,8 @@
       vars:
         luigi_chart_version: "0.1.2"
         luigi_image_tag: "dev_v2.6.0_cv0.1.7"
-        luigi_username: "{{luigi_username}}"
-        luigi_password: "{{luigi_passwd|default(all_services_password)}}"
+        luigi_username: "{{username_all_services}}"
+        luigi_password: "{{password_all_services}}"
         hostname: "{{luigi_hostname}}{{proxied_suffix}}"
         luigi_resource_req_memory: "1G"
         luigi_resource_req_cpu: "200m"
@@ -84,8 +84,8 @@
         name: roles/kubernetes-dashboard
       vars:
         dashboard_chart_version: "0.5.3"
-        dashboard_username: "{{dashboard_username}}"
-        dashboard_password: "{{dashboard_password}}"
+        dashboard_username: "{{username_all_services}}"
+        dashboard_password: "{{password_all_services}}"
         dashboard_host: "{{dashboard_hostname}}{{proxied_suffix}}.{{domain}}"
         nologging: "{{no_sensitive_logging}}"
       when:
@@ -108,8 +108,8 @@
       vars:
         # Common vars
         # Generated secrets used by both Kibana, Prometheus and Grafana
-        logmon_username: "{{logmon_username}}"
-        logmon_password: "{{logmon_password}}"
+        logmon_username: "{{username_all_services}}"
+        logmon_password: "{{password_all_services}}"
         # Default domain to be used for Ingress hosts
         base_domain: "{{proxied_suffix}}.{{domain}}"
         # For disabling or enabling sensitive logging option

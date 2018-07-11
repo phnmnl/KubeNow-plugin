@@ -64,3 +64,7 @@ check_password "galaxy_admin_password" "$galaxy_adm_passw"
 # select all jupyter_password keys in config
 jupyter_passw=$(echo "$kn_config" | jq -r '..|.jupyter_password? | select (.!=null)')
 check_password "jupyter_password" "$jupyter_passw"
+
+# select all all_services_password keys in config
+jupyter_passw=$(echo "$kn_config" | jq -r '..|.password_all_services? | select (.!=null)')
+check_password "password_all_services" "$password_all_services"
