@@ -1,0 +1,37 @@
+---
+# if task in block fails - rescue and output kubernetes pod message
+- block:
+
+    - name: "Wait for {{url}} to be responding)"
+      vars:
+        force_auth: "false"
+        auth_user: ""
+        auth_password: ""
+      uri:
+        url: "{{url}}"
+        user: "{{auth_user}}"
+        password: "{{auth_password}}"
+        force_basic_auth: "{{force_auth}}"
+      register: result
+      until:
+        result['status'] | default(0) == 200
+      # Try for 20 minutes
+      retries: 240
+      delay: 5
+
+
+  rescue:
+
+  - name: catched error - describe pod
+    command: >
+      kubectl describe pods "{{pod_name}}"
+    register: pod_description
+
+  - name: print pod_description
+    debug:
+      msg: "{{ pod_description.stdout }}"
+
+  # now fail when log output is printed
+  - name: fail play
+    fail:
+      msg: "Task error, hopefully the pod description above can help solving the issue"
