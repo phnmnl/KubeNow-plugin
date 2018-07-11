@@ -172,4 +172,4 @@
         url: "http://{{galaxy_hostname}}{{proxied_suffix}}.{{domain}}"
         pod_name: "galaxy"
       when:
-        jupyter_include | bool == true
+        galaxy_include | bool == true

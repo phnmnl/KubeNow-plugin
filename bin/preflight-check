@@ -66,5 +66,5 @@ jupyter_passw=$(echo "$kn_config" | jq -r '..|.jupyter_password? | select (.!=nu
 check_password "jupyter_password" "$jupyter_passw"
 
 # select all all_services_password keys in config
-jupyter_passw=$(echo "$kn_config" | jq -r '..|.password_all_services? | select (.!=null)')
+password_all_services=$(echo "$kn_config" | jq -r '..|.password_all_services? | select (.!=null)')
 check_password "password_all_services" "$password_all_services"
