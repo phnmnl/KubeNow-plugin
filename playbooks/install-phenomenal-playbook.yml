@@ -71,7 +71,7 @@
         luigi_chart_version: "0.1.2"
         luigi_image_tag: "dev_v2.6.0_cv0.1.7"
         luigi_username: "{{luigi_username}}"
-        luigi_password: "{{luigi_password}}"
+        luigi_password: "{{luigi_passwd|default(all_services_password)}}"
         hostname: "{{luigi_hostname}}{{proxied_suffix}}"
         luigi_resource_req_memory: "1G"
         luigi_resource_req_cpu: "200m"
@@ -99,8 +99,8 @@
         heapster_chart_version: "0.2.7"
       when:
         dashboard_include | bool == true
-        
-        
+
+
     # Logging and Monitoring for Kubernetes
     - name: EFK stack, Prometheus and Grafana
       include_role:
@@ -114,22 +114,22 @@
         base_domain: "{{proxied_suffix}}.{{domain}}"
         # For disabling or enabling sensitive logging option
         nologging: "{{no_sensitive_logging}}"
-        
+
         # Logging - EFK stack vars
         efk_host: "{{efk_hostname}}{{proxied_suffix}}.{{domain}}"
         efk_version: "6.2.4"
-        
+
         # Monitoring vars
         # Prometheus
         prometheus_host: "{{prometheus_hostname}}{{proxied_suffix}}.{{domain}}"
         prometheus_version: "6.7.2"
-        
+
         # Grafana
         grafana_host: "{{grafana_hostname}}{{proxied_suffix}}.{{domain}}"
         grafana_version: "1.11.0"
       when:
-        logmon_include | bool == true  
-        
+        logmon_include | bool == true
+
     # Add demo-data to jupyter from repo
     - name: Add mtbls233 data
       include_role:
@@ -143,42 +143,33 @@
 
     # Jupyter
     - name: "Wait for Jupyter notebook to be ready"
-      uri:
+      include_role:
+        name: roles/wait_http_status_ok
+      vars:
         url: "http://{{jupyter_hostname}}{{proxied_suffix}}.{{domain}}"
-      register: result
-      until:
-        result['status'] | default(0) == 200
-      # Try for 20 minutes
-      retries: 240
-      delay: 5
+        pod_name: "jupyter"
       when:
         jupyter_include | bool == true
 
     # Luigi
     - name: "Wait for luigi to be responding)"
-      uri:
+      include_role:
+        name: roles/wait_http_status_ok
+      vars:
         url: "http://{{luigi_hostname}}{{proxied_suffix}}.{{domain}}"
-        user: "{{luigi_username}}"
-        password: "{{luigi_password}}"
-        force_basic_auth: yes
-      register: result
-      until:
-        result['status'] | default(0) == 200
-      # Try for 20 minutes
-      retries: 240
-      delay: 5
+        pod_name: "luigi"
+        auth_user: "{{luigi_username}}"
+        auth_password: "{{luigi_password}}"
+        force_auth: "yes"
       when:
         luigi_include | bool == true
 
     # Galaxy
     - name: "Wait for galaxy to be responding (usually takes minutes)"
-      uri:
+      include_role:
+        name: roles/wait_http_status_ok
+      vars:
         url: "http://{{galaxy_hostname}}{{proxied_suffix}}.{{domain}}"
-      register: result
-      until:
-        result['status'] | default(0) == 200
-      # Try for 20 minutes
-      retries: 240
-      delay: 5
+        pod_name: "galaxy"
       when:
-        galaxy_include | bool == true
+        jupyter_include | bool == true

@@ -1,15 +1,34 @@
 ---
-- name: wait until jupyter container is ready - takes minutes sometimes
-  command: >
-    kubectl get pods -o jsonpath='{.items[?(@.spec.containers[].name=="jupyter")].status.containerStatuses[*].ready}'
-  register: get_is_ready
-  until: get_is_ready.stdout | match( '^(true\s)*true$' )
-  # Wait for 20 minutes
-  retries: 240
-  delay: 5
+# if task in block fails - rescue and output kubernetes pod message
+- block:
 
-- name: git clone mtbls233 proof of concept repo into jupyter container
-  shell: >
-    kubectl get pods -o jsonpath='{.items[?(@.spec.containers[].name=="jupyter")].metadata.name}'
-    | xargs -i kubectl exec {} -- /bin/bash -c '[ -d /home/jovyan/work/MTBLS233 ]
-    || git clone https://github.com/phnmnl/MTBLS233-Jupyter /home/jovyan/work/MTBLS233'
+  - name: wait until jupyter container is ready - takes minutes sometimes
+    command: >
+      kubectl get pods -o jsonpath='{.items[?(@.spec.containers[].name=="jupyter")].status.containerStatuses[*].ready}'
+    register: get_is_ready
+    until: get_is_ready.stdout | match( '^(true\s)*true$' )
+    # Wait for 20 minutes
+    retries: 240
+    delay: 5
+
+  - name: git clone mtbls233 proof of concept repo into jupyter container
+    shell: >
+      kubectl get pods -o jsonpath='{.items[?(@.spec.containers[].name=="jupyter")].metadata.name}'
+      | xargs -i kubectl exec {} -- /bin/bash -c '[ -d /home/jovyan/work/MTBLS233 ]
+      || git clone https://github.com/phnmnl/MTBLS233-Jupyter /home/jovyan/work/MTBLS233'
+
+  rescue:
+
+  - name: catched error - describe pod
+    command: >
+      kubectl describe pods "jupyter"
+    register: pod_description
+
+  - name: print pod_description
+    debug:
+      msg: "{{ pod_description.stdout }}"
+
+  # now fail when log output is printed
+  - name: fail play
+    fail:
+      msg: "Task error, hopefully the pod description above can help solving the issue"
