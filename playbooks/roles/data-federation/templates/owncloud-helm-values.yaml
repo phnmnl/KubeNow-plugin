@@ -1,10 +1,11 @@
---------------------------------------------------------------
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
-##
+#-----------------------------------------------------------------------
 ingress:
   enabled: true
+  
   servicePort: http
+  
   annotations:
     kubernetes.io/ingress.class: "traefik"
     ingress.kubernetes.io/auth-type: "basic"
@@ -18,22 +19,22 @@ owncloudHost: "{{owncloud_host}}"
 ## User of the application
 ## ref: https://github.com/bitnami/bitnami-docker-owncloud#configuration
 ##
-#owncloudUsername: admin
+owncloudUsername: admin
 
 ## Application password
 ## Defaults to a random 10-character alphanumeric string if not set
 ## ref: https://github.com/bitnami/bitnami-docker-owncloud#configuration
 ##
-#owncloudPassword: password
+owncloudPassword: KOAaa219IU
 
 ## Admin email
 ## ref: https://github.com/bitnami/bitnami-docker-owncloud#configuration
 ##
-#owncloudEmail: user@example.com
+#owncloudEmail: user@user.com
 
 ## Set to `yes` to allow the container to be started with blank passwords
 ## ref: https://github.com/bitnami/bitnami-docker-owncloud#environment-variables
-allowEmptyPassword: "yes"
+#allowEmptyPassword: "yes"
 
 ##
 ## MariaDB chart configuration

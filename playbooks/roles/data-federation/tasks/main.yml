@@ -51,7 +51,7 @@
 # Installing Owncloud chart as data federation tool
 - name: install data federation tool - Owncloud helm chart
   command: >
-    helm upgrade "owncloud" stable/owncloud --install
+    helm upgrade "server" stable/owncloud --install
     --namespace federation
     --values ~/.kubernetes-yaml/data-federation/owncloud-helm-values.yaml
     --version "{{ owncloud_version }}"

@@ -30,4 +30,4 @@
         
         # Logging - EFK stack vars
         owncloud_host: "{{owncloud_hostname}}{{proxied_suffix}}.{{domain}}"
-        owncloud_version: "2.0.0"
+        owncloud_version: "1.0.7"
