@@ -25,7 +25,7 @@ owncloudUsername: admin
 ## Defaults to a random 10-character alphanumeric string if not set
 ## ref: https://github.com/bitnami/bitnami-docker-owncloud#configuration
 ##
-owncloudPassword: KOAaa219IU
+owncloudPassword: password
 
 ## Admin email
 ## ref: https://github.com/bitnami/bitnami-docker-owncloud#configuration

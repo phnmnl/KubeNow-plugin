@@ -1,0 +1,84 @@
+#--------------------------------------------------
+alertmanager:
+  ingress:
+    # If true, Prometheus Ingress will be created.
+    enabled: true
+
+    # Prometheus Dashboard Ingress annotations
+    annotations:
+      kubernetes.io/ingress.class: "traefik"
+      ingress.kubernetes.io/auth-type: "basic"
+      ingress.kubernetes.io/auth-secret: "logmon-secret"
+    
+    # Service Port
+    service:
+      servicePort: 8080
+
+    # Prometheus Dashboard Ingress hostnames
+    # Must be provided if Ingress is enabled
+    hosts:
+      - "alertmanager{{base_domain}}"
+      
+  resources:
+    limits:
+      cpu: 10m
+      memory: 32Mi
+    requests:
+      cpu: 10m
+      memory: 32Mi
+#--------------------------------------------------
+server:
+  ingress:
+    # If true, Prometheus Ingress will be created.
+    enabled: true
+
+    # Prometheus Dashboard Ingress annotations
+    annotations:
+      kubernetes.io/ingress.class: "traefik"
+      ingress.kubernetes.io/auth-type: "basic"
+      ingress.kubernetes.io/auth-secret: "logmon-secret"
+    
+    # Service Port
+    service:
+      servicePort: 9090
+
+    # Prometheus Dashboard Ingress hostnames
+    # Must be provided if Ingress is enabled
+    hosts:
+      - "{{prometheus_host}}"
+
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+#---------------------------------------------------
+pushgateway:
+  ingress:
+    # If true, Prometheus Ingress will be created.
+    enabled: true
+
+    # Prometheus Dashboard Ingress annotations
+    annotations:
+      kubernetes.io/ingress.class: "traefik"
+      ingress.kubernetes.io/auth-type: "basic"
+      ingress.kubernetes.io/auth-secret: "logmon-secret"
+    
+    # Service Port
+    service:
+      servicePort: 8008
+
+    # Prometheus Dashboard Ingress hostnames
+    # Must be provided if Ingress is enabled
+    hosts:
+      - "pushgateway{{base_domain}}"
+
+  resources:
+    limits:
+      cpu: 10m
+      memory: 32Mi
+    requests:
+      cpu: 10m
+      memory: 32Mi

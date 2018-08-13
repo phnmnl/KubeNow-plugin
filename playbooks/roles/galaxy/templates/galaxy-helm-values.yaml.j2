@@ -76,8 +76,8 @@ postgres_for_galaxy:
   db_password: "{{ galaxy_admin_password }}"
   postgres_pvc: "{{ postgres_pvc }}"
   subpath: "postgres"
-  postgres_image: "pcm32/galaxy-postgres"
-  postgres_image_tag: ":latest"
+  postgres_image: "{{ postgres_image }}"
+  postgres_image_tag: "{{ postgres_image_tag }}"
 proftpd:
   generate_ssh_key: true
   image:

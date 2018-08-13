@@ -2,6 +2,7 @@
 cluster_prefix = "your-cluster-prefix" # Your cluster prefix
 
 # Google credetials
+gce_credentials_file = "service-account.json" # Has to be stored in the config-dir
 gce_project = "your_project_id" # Google project id
 gce_zone = "europe-west1-c" # Some GCE zone
 
@@ -20,7 +21,7 @@ node_disk_size = "20" # Size in GB
 glusternode_count = "1"
 glusternode_flavor = "n1-standard-2"
 glusternode_disk_size = "20" # Size in GB
-glusternode_extra_disk_size = "150" # Size in GB
+glusternode_extra_disk_size = "200" # Size in GB
 
 # Edge configuration (optional)
 # edge_count = "2"
@@ -72,17 +73,14 @@ provision = {
     "type"     = "ansible-playbook"
     "playbook" = "plugins/phnmnl/KubeNow-plugin/playbooks/install-phenomenal-playbook.yml"
     "extra_vars" = {
-      "galaxy_include"        = "true"
+      "username_all_services" = "admin"
+      "password_all_services" = "password"
       "galaxy_admin_email"    = "yoourname@bla.bla.com"
-      "galaxy_admin_password" = "password"
+      "galaxy_include"        = "true"
       "jupyter_include"       = "true"
-      "jupyter_password"      = "password"
       "luigi_include"         = "true"
-      "luigi_username"        = "admin"
-      "luigi_password"        = "password"
       "dashboard_include"     = "false"
-      "dashboard_username"    = "admin"
-      "dashboard_password"    = "password"
+      "logmon_include"        = "false"
     }
   }
 

@@ -1,11 +1,15 @@
-galaxy_chart_version: "1.5.5"
-galaxy_image_tag: "dev_v17.09-pheno-lr_cv1.6.184"
+galaxy_chart_version: "1.6.0"
+galaxy_image_tag: "v18.01-pheno-isa_cv1.7.289"
 galaxy_init_image: "container-registry.phenomenal-h2020.eu/phnmnl/galaxy-init-pheno-flavoured"
 galaxy_image: "container-registry.phenomenal-h2020.eu/phnmnl/galaxy-web-k8s"
 galaxy_res_limits_cpu: "2"
 galaxy_res_limits_memory: "2Gi"
 galaxy_res_requests_cpu: "500m"
 galaxy_res_requests_memory: "500Mi"
+
+postgres_image: "container-registry.phenomenal-h2020.eu/phnmnl/galaxy-postgres"
+postgres_image_tag: ":9.6.5_for_18.01"
+
 proftpd_image: "container-registry.phenomenal-h2020.eu/phnmnl/galaxy-proftpd"
-proftpd_image_tag: "for_galaxy_v17.09"
+proftpd_image_tag: "for_galaxy_v18.01"
 proftpd_port: 44

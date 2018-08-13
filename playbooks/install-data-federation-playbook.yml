@@ -20,7 +20,7 @@
         name: roles/data-federation
       vars:
         # Common vars
-        # Generated secrets used by both Kibana, Prometheus and Grafana
+        # Generated secrets used for Owncloud
         federation_username: "{{federation_username}}"
         federation_password: "{{federation_password}}"
         # Default domain to be used for Ingress hosts
