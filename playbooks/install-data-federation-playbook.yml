@@ -20,9 +20,13 @@
         name: roles/data-federation
       vars:
         # Common vars
-        # Generated secrets used for Owncloud
-        federation_username: "{{federation_username}}"
-        federation_password: "{{federation_password}}"
+        
+        # Generated secrets used for Owncloud. Currently commented given that
+        # Owncloud provides a basic-auth mechanism
+        
+        # federation_username: "{{username_all_services}}"
+        # federation_password: "{{password_all_services}}"
+
         # Default domain to be used for Ingress hosts
         base_domain: "{{proxied_suffix}}.{{domain}}"
         # For disabling or enabling sensitive logging option

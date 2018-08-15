@@ -30,12 +30,27 @@ else
   echo "http://galaxy.$domain"
   echo "http://notebook.$domain"
   echo "http://luigi.$domain"
-  echo "http://dashboard.$domain"
+  # Checking if extra services have been enable or not. If so, then returning url
+  dashboard=$(grep "dashboard_include" config.tfvars | awk '{ print $3 }' | sed s/\"//g)
+  logmon=$(grep "logmon_include" config.tfvars | awk '{ print $3 }' | sed s/\"//g)
+  data_federation=$(grep "datafed_include" config.tfvars | awk '{ print $3 }' | sed s/\"//g)
+  
+  if [[ "$dashboard" == true ]]; then
+    echo "http://dashboard.$domain"
+  fi
+  if [[ "$logmon" == true ]]; then
+    echo -e "\nLogging and Monitoring Tools:\n"
+    echo "http://kibana.$domain"
+    echo "http://prometheus.$domain"
+    echo "http://grafana.$domain"
+  fi
+  if [[ "$data_federation" == true ]]; then
+    echo -e "\nData Federation Tool:\n"
+    echo "http://owncloud.$domain"
+  fi
 fi
 
 # End output
 echo
 echo 'And if you want to ssh into master, use:'
 echo "kn ssh"
-
-
