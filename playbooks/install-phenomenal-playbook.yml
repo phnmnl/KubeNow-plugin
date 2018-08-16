@@ -17,7 +17,7 @@
     prometheus_hostname: "prometheus"
     grafana_hostname: "grafana"
     logmon_include: "false"
-    datafed_include: "false"
+    datafederation_include: "false"
     owncloud_hostname: "owncloud"
     # Storage
     pvc_name: "galaxy-pvc"
@@ -152,7 +152,7 @@
         owncloud_host: "{{owncloud_hostname}}{{proxied_suffix}}.{{domain}}"
         owncloud_version: "1.0.7"
       when:
-        datafed_include | bool == true
+        datafederation_include | bool == true
       
 
     # Add demo-data to jupyter from repo

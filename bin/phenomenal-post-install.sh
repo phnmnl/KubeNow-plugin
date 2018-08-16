@@ -27,24 +27,33 @@ if [[ "$proxied" == true ]]; then
     echo "https://$record.$domain"
   done
 else
-  echo "http://galaxy.$domain"
-  echo "http://notebook.$domain"
-  echo "http://luigi.$domain"
   # Checking if extra services have been enable or not. If so, then returning url
-  dashboard=$(grep "dashboard_include" config.tfvars | awk '{ print $3 }' | sed s/\"//g)
-  logmon=$(grep "logmon_include" config.tfvars | awk '{ print $3 }' | sed s/\"//g)
-  data_federation=$(grep "datafed_include" config.tfvars | awk '{ print $3 }' | sed s/\"//g)
+  galaxy_include=$(jq -r '.galaxy_include' <<<"$kn_config")
+  luigi_include=$(jq -r '.luigi_include' <<<"$kn_config")
+  jupyter_include=$(jq -r '.jupyter_include' <<<"$kn_config")
+  dashboard_include=$(jq -r '.dashboard_include' <<<"$kn_config")
+  logmon_include=$(jq -r '.logmon_include' <<<"$kn_config")
+  datafederation_include=$(jq -r '.datafederation_include' <<<"$kn_config")
   
-  if [[ "$dashboard" == true ]]; then
+  if [[ "$galaxy_include" == true ]]; then
+    echo "http://galaxy.$domain"
+  fi  
+  if [[ "$luigi_include" == true ]]; then
+    echo "http://luigi.$domain"
+  fi 
+  if [[ "$jupyter_include" == true ]]; then
+    echo "http://notebook.$domain"
+  fi    
+  if [[ "$dashboard_include" == true ]]; then
     echo "http://dashboard.$domain"
   fi
-  if [[ "$logmon" == true ]]; then
+  if [[ "$logmon_include" == true ]]; then
     echo -e "\nLogging and Monitoring Tools:\n"
     echo "http://kibana.$domain"
     echo "http://prometheus.$domain"
     echo "http://grafana.$domain"
   fi
-  if [[ "$data_federation" == true ]]; then
+  if [[ "$datafederation_include" == true ]]; then
     echo -e "\nData Federation Tool:\n"
     echo "http://owncloud.$domain"
   fi

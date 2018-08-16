@@ -48,7 +48,7 @@ provision = {
       "luigi_include"           = "true"
       "dashboard_include"       = "false"
       "logmon_include"          = "false"
-      "datafed_include"         = "false"
+      "datafederation_include"  = "false"
     }
   }
   

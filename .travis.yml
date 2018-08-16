@@ -89,7 +89,7 @@ before_script:
   # Enable dashboard, logmon and data federation
   - sed -i -e 's/\"dashboard_include.*false\"/\"dashboard_include\" = \"true\"/g' config.tfvars
   - sed -i -e 's/\"logmon_include.*false\"/\"logmon_include\" = \"true\"/g' config.tfvars
-  - sed -i -e 's/\"datafed_include.*false\"/\"datafed_include\" = \"true\"/g' config.tfvars
+  - sed -i -e 's/\"datafederation_include.*false\"/\"datafederation_include\" = \"true\"/g' config.tfvars
 
   # Cloudflare
   # - sed -i -e "s/# use_cloudflare/use_cloudflare/g" config.tfvars
