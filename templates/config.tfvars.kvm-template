@@ -30,32 +30,26 @@ provision = {
 # 
 # Create scratch disk as local shared volume
 #
-#  "action" = {
-#    "type"      = "ansible-playbook"
-#    "playbook"  = "playbooks/install-shared-vol-local.yml"
-#    "extra_vars" = {
-#      "vol_size"  = "95G"
-#    }   
-#  }
+  "action" = {
+    "type"      = "ansible-playbook"
+    "playbook"  = "playbooks/install-shared-vol-local.yml"
+    "extra_vars" = {
+      "vol_size"  = "95G"
+    }   
+  }
 
 #
 # Create scratch disk as  NFS fileserver  (instead of local shared volume)
 # 
-  "action" = {
-    "type"      = "ansible-playbook"
-    "playbook"  = "playbooks/install-shared-vol-nfs.yml"
-    "extra_vars" = {
-      "nfs_vol_size" = "100G"
-      "nfs_path"     = "/shared/data/"
-      "nfs_server"   = "130.238.239.175"
-    }
-    
-    #"extra_vars" = {
-    #  "nfs_vol_size" = "100G"
-    #  "nfs_path"     = "/my-share/on-nfs-server/"
-    #  "nfs_server"   = "xxx.xxx.xxx.xxx"
-    #}
-  }
+#  "action" = {
+#    "type"      = "ansible-playbook"
+#    "playbook"  = "playbooks/install-shared-vol-nfs.yml"    
+#    "extra_vars" = {
+#      "nfs_vol_size" = "200G"
+#      "nfs_path"     = "/my-share/on-nfs-server/"
+#      "nfs_server"   = "xxx.xxx.xxx.xxx"
+#    }
+#  }
 
   "action" = {
     "type"      = "ansible-playbook"
