@@ -13,6 +13,10 @@
     galaxy_generated_key: "{{lookup('password', 'galaxy-api-key length=25 chars=ascii_letters')}}"
     dashboard_include: "true"
     dashboard_hostname: "dashboard"
+    efk_hostname: "kibana"
+    prometheus_hostname: "prometheus"
+    grafana_hostname: "grafana"
+    logmon_include: "false"
     # Storage
     pvc_name: "galaxy-pvc"
     postgres_pvc_name: "postgres-pvc"
@@ -34,7 +38,7 @@
         name: roles/galaxy
       vars:
         hostname: "{{galaxy_hostname}}{{proxied_suffix}}"
-        galaxy_admin_password: "generate-random-passw"
+        galaxy_admin_password: "{{password_all_services}}"
         galaxy_admin_email: "your @ email.com"
         galaxy_api_key: "{{galaxy_generated_key}}"
         galaxy_pvc: "{{pvc_name}}"
@@ -51,7 +55,7 @@
         jupyter_chart_version: "0.1.2"
         hostname: "{{jupyter_hostname}}{{proxied_suffix}}"
         jupyter_image_tag: ":v387f29b6ca83_cv0.4.9"
-        jupyter_password: "generate-random-passw"
+        jupyter_password: "{{password_all_services}}"
         jupyter_pvc: "{{pvc_name}}"
         jupyter_resource_req_cpu: "200m"
         jupyter_resource_req_memory: "1G"
@@ -66,8 +70,8 @@
       vars:
         luigi_chart_version: "0.1.2"
         luigi_image_tag: "dev_v2.6.0_cv0.1.7"
-        luigi_username: "{{luigi_username}}"
-        luigi_password: "{{luigi_password}}"
+        luigi_username: "{{username_all_services}}"
+        luigi_password: "{{password_all_services}}"
         hostname: "{{luigi_hostname}}{{proxied_suffix}}"
         luigi_resource_req_memory: "1G"
         luigi_resource_req_cpu: "200m"
@@ -80,8 +84,8 @@
         name: roles/kubernetes-dashboard
       vars:
         dashboard_chart_version: "0.5.3"
-        dashboard_username: "{{dashboard_username}}"
-        dashboard_password: "{{dashboard_password}}"
+        dashboard_username: "{{username_all_services}}"
+        dashboard_password: "{{password_all_services}}"
         dashboard_host: "{{dashboard_hostname}}{{proxied_suffix}}.{{domain}}"
         nologging: "{{no_sensitive_logging}}"
       when:
@@ -96,6 +100,36 @@
       when:
         dashboard_include | bool == true
 
+
+    # Logging and Monitoring for Kubernetes
+    - name: EFK stack, Prometheus and Grafana
+      include_role:
+        name: roles/logging-monitoring
+      vars:
+        # Common vars
+        # Generated secrets used by both Kibana, Prometheus and Grafana
+        logmon_username: "{{username_all_services}}"
+        logmon_password: "{{password_all_services}}"
+        # Default domain to be used for Ingress hosts
+        base_domain: "{{proxied_suffix}}.{{domain}}"
+        # For disabling or enabling sensitive logging option
+        nologging: "{{no_sensitive_logging}}"
+
+        # Logging - EFK stack vars
+        efk_host: "{{efk_hostname}}{{proxied_suffix}}.{{domain}}"
+        efk_version: "6.2.4"
+
+        # Monitoring vars
+        # Prometheus
+        prometheus_host: "{{prometheus_hostname}}{{proxied_suffix}}.{{domain}}"
+        prometheus_version: "6.7.2"
+
+        # Grafana
+        grafana_host: "{{grafana_hostname}}{{proxied_suffix}}.{{domain}}"
+        grafana_version: "1.11.0"
+      when:
+        logmon_include | bool == true
+
     # Add demo-data to jupyter from repo
     - name: Add mtbls233 data
       include_role:
@@ -109,42 +143,33 @@
 
     # Jupyter
     - name: "Wait for Jupyter notebook to be ready"
-      uri:
+      include_role:
+        name: roles/wait_http_status_ok
+      vars:
         url: "http://{{jupyter_hostname}}{{proxied_suffix}}.{{domain}}"
-      register: result
-      until:
-        result['status'] | default(0) == 200
-      # Try for 20 minutes
-      retries: 240
-      delay: 5
+        pod_name: "jupyter"
       when:
         jupyter_include | bool == true
 
     # Luigi
     - name: "Wait for luigi to be responding)"
-      uri:
+      include_role:
+        name: roles/wait_http_status_ok
+      vars:
         url: "http://{{luigi_hostname}}{{proxied_suffix}}.{{domain}}"
-        user: "{{luigi_username}}"
-        password: "{{luigi_password}}"
-        force_basic_auth: yes
-      register: result
-      until:
-        result['status'] | default(0) == 200
-      # Try for 20 minutes
-      retries: 240
-      delay: 5
+        pod_name: "luigi"
+        auth_user: "{{username_all_services}}"
+        auth_password: "{{password_all_services}}"
+        force_auth: "yes"
       when:
         luigi_include | bool == true
 
     # Galaxy
     - name: "Wait for galaxy to be responding (usually takes minutes)"
-      uri:
+      include_role:
+        name: roles/wait_http_status_ok
+      vars:
         url: "http://{{galaxy_hostname}}{{proxied_suffix}}.{{domain}}"
-      register: result
-      until:
-        result['status'] | default(0) == 200
-      # Try for 20 minutes
-      retries: 240
-      delay: 5
+        pod_name: "galaxy"
       when:
         galaxy_include | bool == true
