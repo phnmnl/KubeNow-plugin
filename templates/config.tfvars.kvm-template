@@ -37,7 +37,7 @@ provision = {
   }
 
 #
-# Optional - create scratch disk as  NFS fileserver  (instead of local shared volume)
+# Optional - create scratch disk on NFS fileserver  (instead of local shared volume)
 # 
 #  "action" = {
 #    "type"      = "ansible-playbook"
@@ -59,15 +59,6 @@ provision = {
   }
 
   "action" = {
-    "type"      = "ansible-playbook"
-    "playbook"  = "playbooks/create-pvc.yml"
-    "extra_vars" = {
-      "claim_name"       = "postgres-pvc"
-      "storage"          = "5G"
-    }
-  }
-
-  "action" = {
     "type"     = "ansible-playbook"
     "playbook" = "plugins/phnmnl/KubeNow-plugin/playbooks/install-phenomenal-playbook.yml"
     "extra_vars" = {
@@ -75,6 +66,7 @@ provision = {
       "password_all_services" = "password"
       "galaxy_admin_email"    = "yoourname@bla.bla.com"
       "galaxy_include"        = "true"
+      "postgres_pvc_name"     = "galaxy-pvc"
       "jupyter_include"       = "true"
       "luigi_include"         = "true"
       "dashboard_include"     = "false"
