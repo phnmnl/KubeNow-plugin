@@ -27,19 +27,17 @@ provision = {
     "playbook"  = "playbooks/install-core.yml"
   }
 
-# 
-# Create scratch disk as local shared volume
-#
+  # Create scratch disk as local shared volume
   "action" = {
     "type"      = "ansible-playbook"
     "playbook"  = "playbooks/install-shared-vol-local.yml"
     "extra_vars" = {
-      "vol_size"  = "95G"
+      "vol_size"  = "200G"
     }   
   }
 
 #
-# Create scratch disk as  NFS fileserver  (instead of local shared volume)
+# Optional - create scratch disk as  NFS fileserver  (instead of local shared volume)
 # 
 #  "action" = {
 #    "type"      = "ansible-playbook"
@@ -56,7 +54,16 @@ provision = {
     "playbook"  = "playbooks/create-pvc.yml"
     "extra_vars" = {
       "claim_name"      = "galaxy-pvc"
-      "storage"         = "95G"
+      "storage"         = "90G"
+    }
+  }
+
+  "action" = {
+    "type"      = "ansible-playbook"
+    "playbook"  = "playbooks/create-pvc.yml"
+    "extra_vars" = {
+      "claim_name"       = "postgres-pvc"
+      "storage"          = "5G"
     }
   }
 
