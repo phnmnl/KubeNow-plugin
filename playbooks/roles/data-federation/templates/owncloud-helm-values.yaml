@@ -1,0 +1,80 @@
+## Allowing use of ingress controllers
+## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
+#-----------------------------------------------------------------------
+ingress:
+  enabled: true
+  
+  servicePort: http
+  
+  ## Owncloud already provides a mechanism of basic authentification
+  ## When combined with the one from traefik a conflict arises and login
+  ## into the Owncloud interface fails. Therefore both auth-type and auth-secret
+  ## fields are commented (not removed in case in future this could be combined)
+  ##
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    #ingress.kubernetes.io/auth-type: "basic"
+    #ingress.kubernetes.io/auth-secret: "federation-secret"
+
+## ownCloud host to create application URLs
+## ref: https://github.com/bitnami/bitnami-docker-owncloud#configuration
+##
+owncloudHost: "{{owncloud_host}}"
+
+## User of the application
+## ref: https://github.com/bitnami/bitnami-docker-owncloud#configuration
+##
+owncloudUsername: admin
+
+## Application password
+## Defaults to a random 10-character alphanumeric string if not set
+## ref: https://github.com/bitnami/bitnami-docker-owncloud#configuration
+##
+owncloudPassword: vxzcdfZKOAaa219
+
+## Admin email
+## ref: https://github.com/bitnami/bitnami-docker-owncloud#configuration
+##
+#owncloudEmail: user@user.com
+
+## Set to `yes` to allow the container to be started with blank passwords
+## ref: https://github.com/bitnami/bitnami-docker-owncloud#environment-variables
+#allowEmptyPassword: "yes"
+
+##
+## MariaDB chart configuration
+##
+mariadb:  
+  master:
+    persistence:
+      enabled: true
+      storageClass: ""
+      accessMode: ReadWriteOnce
+      size: 10Gi
+
+## Kubernetes configuration
+## For minikube, set this to NodePort, elsewhere use LoadBalancer
+##
+serviceType: ClusterIP
+
+## Enable persistence using Persistent Volume Claims
+## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+##
+persistence:
+  enabled: true
+  apache:
+    storageClass: ""
+    accessMode: ReadWriteOnce
+    size: 10Gi
+  owncloud:
+    storageClass: ""
+    accessMode: ReadWriteOnce
+    size: 10Gi
+
+## Configure resource requests and limits
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+##
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 300m

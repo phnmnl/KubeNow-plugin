@@ -8,7 +8,7 @@ master_memory = "4096"
 master_as_edge = "true"
 
 # Storage configuration*
-master_extra_disk_size = "200" # Scratch disk size in GB
+master_extra_disk_size = "250" # Scratch disk size in GB
 
 # Cloudflare configuration (optional)
 # use_cloudflare = "true"
@@ -62,17 +62,19 @@ provision = {
     "type"     = "ansible-playbook"
     "playbook" = "plugins/phnmnl/KubeNow-plugin/playbooks/install-phenomenal-playbook.yml"
     "extra_vars" = {
-      "username_all_services" = "admin"
-      "password_all_services" = "password"
-      "galaxy_admin_email"    = "yoourname@bla.bla.com"
-      "galaxy_include"        = "true"
-      "postgres_pvc_name"     = "galaxy-pvc"
-      "jupyter_include"       = "true"
-      "luigi_include"         = "true"
-      "dashboard_include"     = "false"
-      "logmon_include"        = "false"
+      "username_all_services"   = "admin"
+      "password_all_services"   = "password"
+      "galaxy_admin_email"      = "yoourname@bla.bla.com"
+      "galaxy_include"          = "true"
+      "postgres_pvc_name"       = "galaxy-pvc"
+      "jupyter_include"         = "true"
+      "luigi_include"           = "true"
+      "dashboard_include"       = "false"
+      "logmon_include"          = "false"
+      "datafederation_include"  = "false"
     }
   }
+  
 #
 # Optional pachyderm installation
 #

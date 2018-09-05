@@ -86,9 +86,10 @@ before_script:
   # - sed -i -e "s/# edge/edge/g" config.tfvars
   # Enable glusternodes
   - sed -i -e 's/# glusternode/glusternode/g' config.tfvars
-  # Enable dashboard and logmon
+  # Enable dashboard, logmon and data federation
   - sed -i -e 's/\"dashboard_include.*false\"/\"dashboard_include\" = \"true\"/g' config.tfvars
   - sed -i -e 's/\"logmon_include.*false\"/\"logmon_include\" = \"true\"/g' config.tfvars
+  - sed -i -e 's/\"datafederation_include.*false\"/\"datafederation_include\" = \"true\"/g' config.tfvars
 
   # Cloudflare
   # - sed -i -e "s/# use_cloudflare/use_cloudflare/g" config.tfvars
