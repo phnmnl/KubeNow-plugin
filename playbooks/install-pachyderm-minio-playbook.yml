@@ -4,8 +4,8 @@
   gather_facts: "no"
   vars:
     # Service version tags
-    minio_version: "RELEASE.2018-09-01T00-38-25Z"
-    mc_version: "RELEASE.2018-08-18T02-13-04Z"
+    minio_version: "RELEASE.2018-09-12T18-49-56Z"
+    mc_version: "RELEASE.2018-09-10T23-39-12Z"
     os_storage_class: "object-store-sc"
     pachyderm_version: "1.6.6"
     pachd_requests_cpu: "1"

@@ -2,7 +2,7 @@
 - name: install Minio
   command: >
     helm upgrade --install
-    --version "1.6.4"
+    --version "1.8.0"
     --set image.tag="{{ minio_tag }}",mcImage.tag="{{ mc_tag }}",accessKey="{{ minio_accesskey }}",secretKey="{{ minio_secretkey }}",nasgateway.enabled=true,nasgateway.replicas="{{ minio_replicas }}",service.type=ClusterIP,persistence.size="{{ minio_pvc_size }}",persistence.storageClass="{{ os_sc }}",persistence.accessMode=ReadWriteMany,defaultBucket.enabled=true,defaultBucket.name=defaultbucket
     "{{ minio_release_name }}" stable/minio
 
