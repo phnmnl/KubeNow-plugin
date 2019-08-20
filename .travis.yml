@@ -99,12 +99,12 @@ before_script:
   # the very start of the line, until it hits a line with no `#` at the start. `:a` defines a label named `a` and `ta` jumps to that label if
   # the most recent `s` command made a modification. The `n` command prints the current "pattern space" (the buffer that holds the data) and
   # reads the next line into the same space. (edited)
-  - sed -i -e '/pachyderm installation$/{:a;n;s/^#//;ta}' config.tfvars
+#  - sed -i -e '/pachyderm installation$/{:a;n;s/^#//;ta}' config.tfvars
   # Append some params to pachyderm block
-  - sed -i '/"pachyderm_etcd_pvc_size" = "5G"/a "pachd_requests_cpu" = "250m"' config.tfvars
-  - sed -i '/"pachyderm_etcd_pvc_size" = "5G"/a "pachd_requests_mem" = "250M"' config.tfvars
-  - sed -i '/"pachyderm_etcd_pvc_size" = "5G"/a "etcd_requests_cpu" = "250m"' config.tfvars
-  - sed -i '/"pachyderm_etcd_pvc_size" = "5G"/a "etcd_requests_mem" = "250M"' config.tfvars
+#  - sed -i '/"pachyderm_etcd_pvc_size" = "5G"/a "pachd_requests_cpu" = "250m"' config.tfvars
+#  - sed -i '/"pachyderm_etcd_pvc_size" = "5G"/a "pachd_requests_mem" = "250M"' config.tfvars
+#  - sed -i '/"pachyderm_etcd_pvc_size" = "5G"/a "etcd_requests_cpu" = "250m"' config.tfvars
+#  - sed -i '/"pachyderm_etcd_pvc_size" = "5G"/a "etcd_requests_mem" = "250M"' config.tfvars
 
 
 script:
